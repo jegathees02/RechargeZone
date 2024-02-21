@@ -11,3 +11,16 @@
   user-select: none;
 
 }
+
+
+/* light mode defaults */
+body {
+  background-color: #222;
+  color: #000;
+}
+
+/* dark mode defaults */
+.dark {
+  background-color: #222;
+  color: #fff;
+}
