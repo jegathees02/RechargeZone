@@ -1,8 +1,8 @@
 // navbarData.js
 const userNavbarLinks = [
-    { href: "/", label: "Home" },
-    { href: "/profile", label: "Profile" },
-    { href: "/settings", label: "Settings" },
+    { href: "/home", label: "Home " },
+    // { href: "/profile", label: "" },
+    // { href: "/settings", label: "Settings" },
   ];
   
 export const adminNavbarLinks = [

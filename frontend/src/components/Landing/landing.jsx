@@ -11,9 +11,12 @@ const Landing = () => {
                 <h1 className='text-6xl  text-green-200 py-5'>RechargeZone</h1>
                 <p className='text-3xl dark: text-white pb-5'> Easy Pay through one  click</p>
 
-                <button onClick={() => <Link to="/login"></Link>} className='bg-blue-400 rounded-md py-2 px-6'>
+                
+                <Link to="/login"><button  className='bg-blue-400 rounded-md py-2 px-6'>
                     Get into
-                </button>
+                </button></Link>
+
+
             </div>
             
         </div>

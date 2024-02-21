@@ -1,6 +1,6 @@
 module.exports =  {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./node_modules/flowbite/**/*.js"],
-  darkMode: 'media',
+  darkMode: ['class'],
   theme: {
     // Customize Tailwind's theme based on your design requirements
   },
