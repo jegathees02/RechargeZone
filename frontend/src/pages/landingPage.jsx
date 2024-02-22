@@ -6,7 +6,7 @@ import Footer from "../components/Footer/footer";
 
 const LandingPage = () => {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col ">
       {/* <div className="flex flex-row"> */}
       <Navbar links={userNavbarDatas} />
       {/* <Sidebar className=" p-4 fixed mt-4" /> */}

@@ -10,8 +10,10 @@ import Logo from "./components/Logo/logo";
 import Sidebar from "./components/sidebar/sidebar";
 import LandingPage from "./pages/landingPage";
 import EditprofilePage from "./pages/editprofilePage";
-
+import UserrechargePage from "./pages/user/RechargePage/userrechargePage";
+import ViewrechargePage from "./pages/user/RechargePage/viewrechargePage";
 import UserHomePage from "./pages/user/Homepage/userHomePage";
+import UserprofilePage from "./pages/user/Profile/userprofilePage";
 
 function App() {
 
@@ -26,6 +28,9 @@ function App() {
         <Route path="/sidebar" element={<Sidebar/>} />
         <Route path="/home" element={<UserHomePage/>} />
         <Route path="/edit" element={<EditprofilePage/>} />
+        <Route path="/user/recharge" element={<UserrechargePage/>} />
+        <Route path="/user/profile" element={<UserprofilePage/>} />
+        <Route path="user/recharge/:id" element={<ViewrechargePage/>} />
         {/* </Route> */}
       </Routes>
     </BrowserRouter>

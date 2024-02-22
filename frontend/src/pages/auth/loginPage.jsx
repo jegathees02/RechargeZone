@@ -4,7 +4,7 @@ import Login from "../../components/Login/login";
 
 const LoginPage = () => {
     return (
-        <div>
+        <div className="font-serif">
             <Navbar links={userNavbarDatas} />
             <Login />
         </div>

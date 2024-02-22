@@ -4,7 +4,7 @@ const Editprofile = () => {
     
     return (
         <>
-        <div className="font-sans text-white bg-transparent grid grid-cols-3 h-3 gap-x-20  gap-y-20 justify-items-center ">
+        <div className="font-sans text-white bg-gradient-to-r from-slate-50 to-emerald-100 dark:bg-gradient-to-r from-slate-900 to-slate-700 grid grid-cols-3 h-3 gap-x-20  gap-y-20 justify-items-center ">
             <div className="border ">
                 <div>
                     <h1>First Name:</h1>

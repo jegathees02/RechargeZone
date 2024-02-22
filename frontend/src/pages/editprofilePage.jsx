@@ -5,7 +5,7 @@ import userNavbarDatas from "../components/Navbar/navbarData";
 
 const EditprofilePage = () => {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col bg-gradient-to-r from-slate-50 to-emerald-100 dark:bg-gradient-to-r from-slate-900 to-slate-700">
             <Navbar links={userNavbarDatas}/>
             <div className="flex">
                 <Sidebar links={userNavbarDatas}/>
