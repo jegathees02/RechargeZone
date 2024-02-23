@@ -1,7 +1,7 @@
+// import React from 'react';
 import { useState } from 'react';
 
-const Editprofile = () => {
-    // Define state variables for form fields
+const Admineditprofile = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -83,4 +83,4 @@ const Editprofile = () => {
     );
 }
 
-export default Editprofile;
+export default Admineditprofile;

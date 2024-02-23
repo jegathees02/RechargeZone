@@ -6,7 +6,8 @@ import Footer from "../../../components/Footer/footer";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import userNavbarDatas from '../../../components/Navbar/navbarData';
-import adminNavbarLinks from '../../../components/Navbar/navbarData'; 
+// import adminNavbarLinks from '../../../components/Navbar/navbarData'; 
+import { userSidebarLinks } from "../../../components/sidebar/sidebardata";
 
 import OfferImg from '../../../assets/images/signup.gif';
 
@@ -22,10 +23,10 @@ const UserHomePage = () => {
     // const userRole = 'user';
   return (
     <>
-    <div className="flex flex-col dark:text-white">
+    <div className="font-serif flex flex-col dark:text-white">
       <Navbar links={userNavbarDatas} />
       <div className="flex flex-row">
-      <div className="w"> <Sidebar links={adminNavbarLinks}/></div>
+      <div className="w"> <Sidebar links={userSidebarLinks}/></div>
       <div className="flex flex-col w-full mx-auto px-10">
         <h1 className="px-7 pt-5 pb-3 text-2xl font-semibold">Hello Jegathees,Good Morning....</h1>
         <div className="justify-center text-center">

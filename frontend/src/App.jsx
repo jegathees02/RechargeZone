@@ -9,11 +9,20 @@ import SignupPage from "./pages/auth/signupPage";
 import Logo from "./components/Logo/logo";
 import Sidebar from "./components/sidebar/sidebar";
 import LandingPage from "./pages/landingPage";
-import EditprofilePage from "./pages/editprofilePage";
+import EditprofilePage from "./pages/user/Profile/usereditprofilePage";
 import UserrechargePage from "./pages/user/RechargePage/userrechargePage";
 import ViewrechargePage from "./pages/user/RechargePage/viewrechargePage";
 import UserHomePage from "./pages/user/Homepage/userHomePage";
 import UserprofilePage from "./pages/user/Profile/userprofilePage";
+import UserhistoryPage from "./pages/user/History/userhistoryPage";
+
+
+//admin imports
+import AdminprofilePage from "./pages/admin/Profile/adminprofilePage";
+import AdmineditprofilePage from "./pages/admin/Profile/admineditprofilePage";
+import Rechargecard from "./components/Cards/Rechargecards/rechargecard";
+import AdminprepaidPage from "./pages/admin/Profile/adminprepaidPage";
+
 
 function App() {
 
@@ -27,11 +36,21 @@ function App() {
         <Route path="/logo" element={<Logo/>} />
         <Route path="/sidebar" element={<Sidebar/>} />
         <Route path="/home" element={<UserHomePage/>} />
-        <Route path="/edit" element={<EditprofilePage/>} />
+        <Route path="user/profile/edit" element={<EditprofilePage/>} />
         <Route path="/user/recharge" element={<UserrechargePage/>} />
         <Route path="/user/profile" element={<UserprofilePage/>} />
         <Route path="user/recharge/:id" element={<ViewrechargePage/>} />
+        <Route path="user/history" element={<UserhistoryPage/>} />
         {/* </Route> */}
+
+
+
+        {/* admin paths */}
+        <Route path="demo/card" element={<Rechargecard/>} />
+        <Route path="admin/profile" element={<AdminprofilePage/>} />
+        <Route path="admin/profile/edit" element={<AdmineditprofilePage/>} />
+        <Route path="admin/prepaid" element={<AdminprepaidPage/>} />
+
       </Routes>
     </BrowserRouter>
   )
