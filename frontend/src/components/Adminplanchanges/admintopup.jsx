@@ -1,4 +1,5 @@
 // import React from 'react';
+
 import Rechargecard from "../Cards/Rechargecards/rechargecard";
 
 const initialOfferList = [
@@ -20,9 +21,9 @@ const initialOfferList = [
     },
 ];
 
-const Adminprepaid = () => {
+const Admintopup = () => {
     return (
-      <>
+        <>
       <div className="flex flex-col px-6">
         <div className="py-2">
           <div className="py-2 ">
@@ -32,7 +33,7 @@ const Adminprepaid = () => {
               <Rechargecard offerlists={initialOfferList} />
           </div>
         </div>
-        <div  className="py-2">
+        {/* <div  className="py-2">
           <div className="py-2 ">
             <h1 className="text-2xl font-semibold dark:text-white">1 GB/Day plans</h1>
           </div>
@@ -47,14 +48,11 @@ const Adminprepaid = () => {
           <div>
               <Rechargecard offerlists={initialOfferList} />
           </div>
-        </div>
+        </div> */}
 
       </div>
       </>
-        // <div>
-        //     <Rechargecard offerlists={initialOfferList} />
-        // </div>
     );
 }
 
-export default Adminprepaid;
+export default Admintopup;

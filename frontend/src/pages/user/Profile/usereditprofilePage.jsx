@@ -1,8 +1,12 @@
-import Editprofile from "../../../components/Profile/editprofile";
+import React,{ Suspense } from "react";
+
+// import Editprofile from "../../../components/Profile/editprofile";
 import Navbar from "../../../components/Navbar/navbar";
 import Sidebar from "../../../components/sidebar/sidebar";
 import userNavbarDatas from "../../../components/Navbar/navbarData";
 import { userSidebarLinks } from "../../../components/sidebar/sidebardata";
+
+const LazyEditProfile = React.lazy(() => import('../../../components/Profile/editprofile'))
 
 const EditprofilePage = () => {
     return (
@@ -11,7 +15,10 @@ const EditprofilePage = () => {
             <div className="flex">
                 <Sidebar links={userSidebarLinks}/>
                 <div className="mx-auto">
-                <Editprofile />
+                    <Suspense fallback={<div className="dark: text-2xl text-white">Loading ...</div>}>
+                        <LazyEditProfile />
+                    </Suspense>
+                {/* <Editprofile /> */}
                 </div>
                 
             </div>

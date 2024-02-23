@@ -1,8 +1,12 @@
 // import {  TERipple } from "tw-elements-react";
-import { Link } from 'react-router-dom';
+import { Link , useNavigate } from 'react-router-dom';
 import signUpImage from '../.././assets/images/signup.gif'
 
 const Signup = () => {
+    const navigate = useNavigate();
+    const handleSignup = (e) => {
+        navigate('/login');
+    }
     return (
         <section className="h-screen">
       <div className="container px-6 py-10">
@@ -31,7 +35,7 @@ const Signup = () => {
                           </svg>
                       </label>
                   </li>
-                  <li>
+                  {/* <li>
                       <input type="radio" id="hosting-big" name="hosting" value="hosting-big" className="hidden peer" />
                       <label htmlFor="hosting-small" className="inline-flex items-center justify-between w-full px-4 py-2.5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
                           <div className="">
@@ -41,7 +45,7 @@ const Signup = () => {
                               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                           </svg>
                       </label>
-                  </li>
+                  </li> */}
               </ul>
             <div className="grid md:grid-cols-2 md:gap-6">
         <div className="relative z-0 w-full mb-5 group">
@@ -78,7 +82,7 @@ const Signup = () => {
       <div>
               <p className="dark:text-white">Have Account&nbsp; ? &nbsp;<Link className="text-red-700 hover:underline" to="/login">Login </Link></p>
             </div>
-            <button type="submit" className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-7 py-2 mt-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">SignUp</button>
+            <button onClick={(e) => handleSignup(e)} type="submit" className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-7 py-2 mt-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">SignUp</button>
 
       
   {/* <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button> */}

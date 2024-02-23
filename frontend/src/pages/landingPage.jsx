@@ -1,8 +1,12 @@
-import Landing from "../components/Landing/landing";
+import React,{Suspense} from "react";
+
+// import Landing from "../components/Landing/landing";
 import Navbar from "../components/Navbar/navbar";
 import userNavbarDatas from "../components/Navbar/navbarData";
 import Footer from "../components/Footer/footer";
 // import Sidebar from "../components/sidebar/sidebar";
+
+const LazyLanding = React.lazy(() => import('../components/Landing/landing'));
 
 const LandingPage = () => {
     return (
@@ -12,7 +16,10 @@ const LandingPage = () => {
       {/* <Sidebar className=" p-4 fixed mt-4" /> */}
       {/* <div className="w"> <Sidebar links={adminNavbarLinks}/></div> */}
       {/* </div> */}
-      <Landing />
+      {/* <Landing /> */}
+      <Suspense fallback={<div>Loading ..</div>}>
+        <LazyLanding />
+      </Suspense>
       {/* <Navbar className="col-span-4 shadow-md" /> */}
 
       {/* Sidebar */}

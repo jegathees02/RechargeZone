@@ -22,6 +22,8 @@ import AdminprofilePage from "./pages/admin/Profile/adminprofilePage";
 import AdmineditprofilePage from "./pages/admin/Profile/admineditprofilePage";
 import Rechargecard from "./components/Cards/Rechargecards/rechargecard";
 import AdminprepaidPage from "./pages/admin/Profile/adminprepaidPage";
+import AdminpostpaidPage from "./pages/admin/Profile/adminpostpaidPage";
+import AdmintopupPage from "./pages/admin/Profile/admintopupPage";
 
 
 function App() {
@@ -50,6 +52,8 @@ function App() {
         <Route path="admin/profile" element={<AdminprofilePage/>} />
         <Route path="admin/profile/edit" element={<AdmineditprofilePage/>} />
         <Route path="admin/prepaid" element={<AdminprepaidPage/>} />
+        <Route path="admin/postpaid" element={<AdminpostpaidPage/>} />
+        <Route path="admin/top-up" element={<AdmintopupPage/>} />
 
       </Routes>
     </BrowserRouter>

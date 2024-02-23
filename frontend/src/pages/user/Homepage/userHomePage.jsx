@@ -1,5 +1,8 @@
-import Navbar from "../../../components/Navbar/navbar";
-import Sidebar from "../../../components/sidebar/sidebar";
+// import Navbar from "../../../components/Navbar/navbar";
+import React, { Suspense } from 'react';
+import {  useSelector } from 'react-redux';
+import { setName } from '../../../redux/userRoleSlice';
+// import Sidebar from "../../../components/sidebar/sidebar";
 import Footer from "../../../components/Footer/footer";
 // import Slider from 'react-slick';
 // import { Carousel } from 'flowbite-react';
@@ -11,7 +14,13 @@ import { userSidebarLinks } from "../../../components/sidebar/sidebardata";
 
 import OfferImg from '../../../assets/images/signup.gif';
 
+
+const LazyNavbar = React.lazy(() => import("../../../components/Navbar/navbar"));
+const LazySidebar = React.lazy(() => import("../../../components/sidebar/sidebar"));
+// const LazyFooter = React.lazy(() => import("../../../components/Footer/footer"));
+
 const UserHomePage = () => {
+  const name = useSelector((state) => state.userRole.name);
 
   // var settings = {
   //   dots: true,
@@ -24,26 +33,35 @@ const UserHomePage = () => {
   return (
     <>
     <div className="font-serif flex flex-col dark:text-white">
-      <Navbar links={userNavbarDatas} />
+      {/* <Navbar links={userNavbarDatas} /> */}
+      <Suspense fallback={<div>Loading Navbar...</div>}>
+        <LazyNavbar  links={userNavbarDatas}/>
+      </Suspense>
+
       <div className="flex flex-row">
-      <div className="w"> <Sidebar links={userSidebarLinks}/></div>
+      <div className="w"> 
+      {/* <Sidebar links={userSidebarLinks}/> */}
+      <Suspense fallback={<div>Loading sidebar...</div>}>
+        <LazySidebar links={userSidebarLinks} />
+      </Suspense>
+      </div>
       <div className="flex flex-col w-full mx-auto px-10">
-        <h1 className="px-7 pt-5 pb-3 text-2xl font-semibold">Hello Jegathees,Good Morning....</h1>
+        <h1 className="px-7 pt-5 pb-3 text-2xl font-semibold">Hello {name},Good Morning....</h1>
         <div className="justify-center text-center">
         <div className="flex  rounded-lg w-full mx-auto h-48 py-5 bg-gradient-to-r from-green-600 to-emerald-700">
           </div>
           <div className="w-full h-10 top-[-13%] relative flex justify-evenly">
           <div className="border rounded-md h-10 w-48 my-auto relative top-3 bg-white ">
-            <h1 className="text-green-600 font-medium my-2">Your Pack:</h1>
+            <h1 className="text-green-600 font-medium my-2">Your Pack: Jio Unlimited</h1>
           </div>
           <div className="border rounded-md h-10 w-48 my-auto relative top-3 bg-white">
-            <h1 className="text-green-600 font-medium my-2">Your Pack:</h1>
+            <h1 className="text-green-600 font-medium my-2">Data : 1 GB/Day</h1>
           </div>
           <div className="border rounded-md h-10 w-48 my-auto relative top-3 bg-white">
-            <h1 className="text-green-600 font-medium my-2">Your Pack:</h1>
+            <h1 className="text-green-600 font-medium my-2">SMS : 100 SMS/Day</h1>
           </div>
           <div className="border rounded-md h-10 w-48 my-auto relative top-3 bg-white">
-            <h1 className="text-green-600 font-medium my-2">Your Pack:</h1>
+            <h1 className="text-green-600 font-medium my-2">Next recharge : 10 Days</h1>
           </div>
           </div>
           {/* <div className="  p-4 ">
@@ -62,8 +80,8 @@ const UserHomePage = () => {
           </div> */}
         {/* </div> */}
         </div>
-        <div className="p-4">
-          <h1 className="text-5xl font-semibold">Offers</h1>
+        <div className="p-4 font-serif">
+          <h1 className="text-5xl font-serif font-semibold">Offers</h1>
           {/* <Slider {...settings}> */}
           <div className="flex gap-5">
             <div className="border-2 rounded-md p-2 w-48 mt-9 flex flex-col">

@@ -1,9 +1,13 @@
 // import React from 'react';
+import React, { Suspense } from 'react';
+
 import Navbar from "../../../components/Navbar/navbar";
 import userNavbarDatas from "../../../components/Navbar/navbarData";
 import { userSidebarLinks } from "../../../components/sidebar/sidebardata";
 import Sidebar from "../../../components/sidebar/sidebar";
-import Userprofile from "../../../components/Profile/userprofile";
+// import Userprofile from "../../../components/Profile/userprofile";
+
+const LazyUserprofile = React.lazy(() => import ('../../../components/Profile/userprofile'));
 
 const UserprofilePage = () => {
     const user = {
@@ -20,7 +24,10 @@ const UserprofilePage = () => {
                     <Sidebar links={userSidebarLinks} />
                 </div>
                 <div>
-                    <Userprofile user={user} />
+                    <Suspense fallback={<div className = "dark:text-white  text-2xl">Loading</div>}>
+                        <LazyUserprofile user={user} />
+                    </Suspense>
+                    {/* <Userprofile user={user} /> */}
                 </div>
             </div>
             

@@ -20,9 +20,9 @@ const initialOfferList = [
     },
 ];
 
-const Adminprepaid = () => {
+const Adminpostpaid = () => {
     return (
-      <>
+        <>
       <div className="flex flex-col px-6">
         <div className="py-2">
           <div className="py-2 ">
@@ -51,10 +51,7 @@ const Adminprepaid = () => {
 
       </div>
       </>
-        // <div>
-        //     <Rechargecard offerlists={initialOfferList} />
-        // </div>
     );
 }
 
-export default Adminprepaid;
+export default Adminpostpaid;

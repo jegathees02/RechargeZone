@@ -3,16 +3,32 @@ import { Link , useNavigate } from "react-router-dom";
 import "../../../src/index.css";
 import loginImage from "../../../src/assets/images/login.gif";
 
+import { useDispatch } from "react-redux"; 
+import { setName } from "../../redux/userRoleSlice"; 
+
+
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const[,setRole] = useState("user");
+  const[role,setRole] = useState("user");
     const[email,setEmail] = useState("");
     const [password, setPassword]=useState("");
     const handleLogin =(e) => {
       e.preventDefault();
       console.log(email);
       console.log(password);
-      navigate("/home");
+      if(role === 'admin') {
+        if(email==="admin@gmail.com" && password==="12345"){
+          navigate('/admin/prepaid')
+        }
+      }
+      else if(email === "user@gmail.com" && password === '12345'){
+        dispatch(setName(email));
+        navigate("/home");
+      }
+      else{
+        alert("Invalid Credentials");
+      }
 
     }
     return (
@@ -35,7 +51,7 @@ const Login = () => {
 
               <ul className="grid w-full gap-6 md:grid-cols-2 mb-5 ">
                   <li>
-                      <input type="radio" id="user" name="role" value="user" className="hidden peer" checked onClick={() => setRole("user")}/>
+                      <input type="radio" id="user" name="role" value="user" className="hidden peer" onClick={() => setRole("user")}/>
                       <label htmlFor="user" className="inline-flex items-center justify-between w-full px-4 py-2.5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
                           <div className="">
                               <div className="w-full text-lg font-semibold">User</div>
@@ -61,7 +77,7 @@ const Login = () => {
 
             <div className="mb-5">
               <label htmlFor="email" className="block mb-2 text-sm font-medium text-steel-900 dark:text-white">Your email</label>
-              <input onChange={(e) => setEmail(e.target.value)} type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com"  />
+              <input onChange={(e) => setEmail(e.target.value)} type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@gmail.com"  />
             </div>
             <div className="mb-5">
               <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>

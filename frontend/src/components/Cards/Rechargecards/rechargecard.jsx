@@ -135,6 +135,8 @@ const Rechargecard = ( { offerlists } ) => {
                         <h2 className="text-xl font-semibold mb-2">Add New Offer</h2>
                         <input type="text" name="price" placeholder="Price" onChange={handleInputChange} />
                         <input type="text" name="validity" placeholder="Validity" onChange={handleInputChange} />
+                        <input type="text" name="subscription" placeholder="Subscription" onChange={handleInputChange} />
+                        <input type="text" name="benefits" placeholder="Benefits" onChange={handleInputChange} />
                         {/* Add other input fields as needed */}
                         <div className="flex justify-end mt-4">
                             <button onClick={handleAddModalClose} className="mr-2">Cancel</button>
@@ -149,6 +151,8 @@ const Rechargecard = ( { offerlists } ) => {
                         <h2 className="text-xl font-semibold mb-2">Update Offer</h2>
                         <input type="text" name="price" placeholder="Price" defaultValue={selectedOffer.price} onChange={handleInputChange} />
                         <input type="text" name="validity" placeholder="Validity" defaultValue={selectedOffer.validity} onChange={handleInputChange} />
+                        <input type="text" name="subscription" placeholder="subscription" defaultValue={selectedOffer.subscription} onChange={handleInputChange} />
+                        <input type="text" name="benefits" placeholder="Benefits" defaultValue={selectedOffer.benefits} onChange={handleInputChange} />
                         {/* Add other input fields as needed */}
                         <div className="flex justify-end mt-4">
                             <button onClick={handleUpdateModalClose} className="mr-2">Cancel</button>
