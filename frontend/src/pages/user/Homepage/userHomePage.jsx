@@ -86,20 +86,20 @@ const UserHomePage = () => {
           <div className="flex gap-5">
             <div className="border-2 rounded-md p-2 w-48 mt-9 flex flex-col">
               <img className="rounded-xl h-48 w-48  object-cover" src={OfferImg} alt="offerimg" />
-              <h2 className="py-4 px-2">Offer Name</h2>
+              <h2 className="py-4 px-2">50% off on first recharge</h2>
             </div>
             <div className="border-2 rounded-md p-2 w-48 mt-9 flex flex-col">
               <img className="rounded-xl h-48 w-48  object-cover" src={OfferImg} alt="offerimg" />
-              <h2 className="py-4 px-2">Offer Name</h2>
+              <h2 className="py-4 px-2">10% daily offer</h2>
             </div>
             <div className="border-2 rounded-md p-2 w-48 mt-9 flex flex-col">
               <img className="rounded-xl h-48 w-48  object-cover" src={OfferImg} alt="offerimg" />
-              <h2 className="py-4 px-2">Offer Name</h2>
+              <h2 className="py-4 px-2">Special offer for you</h2>
             </div>
-            <div className="border-2 rounded-md p-2 w-48 mt-9 flex flex-col">
+            {/* <div className="border-2 rounded-md p-2 w-48 mt-9 flex flex-col">
               <img className="rounded-xl h-48 w-48  object-cover" src={OfferImg} alt="offerimg" />
               <h2 className="py-4 px-2">Offer Name</h2>
-            </div>
+            </div> */}
           </div>
             {/* </Slider> */}
         </div>

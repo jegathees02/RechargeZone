@@ -5,6 +5,7 @@ import signUpImage from '../.././assets/images/signup.gif'
 const Signup = () => {
     const navigate = useNavigate();
     const handleSignup = (e) => {
+        e.preventdefault;
         navigate('/login');
     }
     return (

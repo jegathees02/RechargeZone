@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Landing = () => {
     return (
-        <div className='flex font-serif'>
+        <div className='flex font-serif bg-gray-900'>
             <div>
-            <img className='p-10 bg-neutral-200 ' src={simCard} alt="Sim Card" />
+            <img className='p-10 bg-gray-900 ' src={simCard} alt="Sim Card" />
             </div>
             <div className='p-7'>
                 <h1 className='text-6xl  text-green-200 py-5 '>RechargeZone</h1>

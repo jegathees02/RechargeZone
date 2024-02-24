@@ -6,9 +6,9 @@ const userNavbarLinks = [
   ];
   
 export const adminNavbarLinks = [
-    { href: "/admin/dashboard", label: "Dashboard" },
-    { href: "/admin/users", label: "Users" },
-    { href: "/admin/settings", label: "Settings" },
+    // { href: "/admin/dashboard", label: "Dashboard" },
+    // { href: "/admin/users", label: "Users" },
+    // { href: "/admin/settings", label: "Settings" },
   ];
 
   

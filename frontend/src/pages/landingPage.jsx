@@ -2,9 +2,10 @@ import React,{Suspense} from "react";
 
 // import Landing from "../components/Landing/landing";
 import Navbar from "../components/Navbar/navbar";
-import userNavbarDatas from "../components/Navbar/navbarData";
+// import userNavbarDatas from "../components/Navbar/navbarData";
 import Footer from "../components/Footer/footer";
 // import Sidebar from "../components/sidebar/sidebar";
+const dummyList = [];
 
 const LazyLanding = React.lazy(() => import('../components/Landing/landing'));
 
@@ -12,7 +13,7 @@ const LandingPage = () => {
     return (
         <div className="flex flex-col ">
       {/* <div className="flex flex-row"> */}
-      <Navbar links={userNavbarDatas} />
+      <Navbar links={dummyList} />
       {/* <Sidebar className=" p-4 fixed mt-4" /> */}
       {/* <div className="w"> <Sidebar links={adminNavbarLinks}/></div> */}
       {/* </div> */}

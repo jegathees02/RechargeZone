@@ -1,8 +1,8 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types'
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faPlus, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 // const initialOfferList = [
 //     {
@@ -23,78 +23,78 @@ import { faPlus, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 //     },
 // ];
 
-const Rechargecard = ( { offerlists } ) => {
+const Userrechargecard = ( { offerlists } ) => {
     const [offerList, setOfferList] = useState(offerlists);
-    const [showAddModal, setShowAddModal] = useState(false);
+    // const [showAddModal, setShowAddModal] = useState(false);
     const [newOfferData, setNewOfferData] = useState({});
-    const [showUpdateModal, setShowUpdateModal] = useState(false);
+    // const [showUpdateModal, setShowUpdateModal] = useState(false);
     const [selectedOffer, setSelectedOffer] = useState(null);
 
-    const handleAddOffer = () => {
-        setShowAddModal(true);
-    };
+    // const handleAddOffer = () => {
+    //     setShowAddModal(true);
+    // };
 
-    const handleDeleteOffer = (id) => {
-        const updatedList = offerList.filter(offer => offer.id !== id);
-        setOfferList(updatedList);
-    };
+    // const handleDeleteOffer = (id) => {
+    //     const updatedList = offerList.filter(offer => offer.id !== id);
+    //     setOfferList(updatedList);
+    // };
 
-    const handleUpdateOffer = (offer) => {
-        setSelectedOffer(offer);
-        setShowUpdateModal(true);
-    };
+    // const handleUpdateOffer = (offer) => {
+    //     setSelectedOffer(offer);
+    //     setShowUpdateModal(true);
+    // };
     
-    const handleAddModalClose = () => {
-        setShowAddModal(false);
-    };
+    // const handleAddModalClose = () => {
+    //     setShowAddModal(false);
+    // };
 
-    const handleUpdateModalClose = () => {
-        setShowUpdateModal(false);
-    };
+    // const handleUpdateModalClose = () => {
+    //     setShowUpdateModal(false);
+    // };
     
-    const handleAddModalSubmit = () => {
-        const newOffer = {
-            id: offerList.length + 1,
-            ...newOfferData
-        };
-        setOfferList([...offerList, newOffer]);
-        setShowAddModal(false);
-        setNewOfferData({});
-    };
+    // const handleAddModalSubmit = () => {
+    //     const newOffer = {
+    //         id: offerList.length + 1,
+    //         ...newOfferData
+    //     };
+    //     setOfferList([...offerList, newOffer]);
+    //     setShowAddModal(false);
+    //     setNewOfferData({});
+    // };
 
-    const handleUpdateModalSubmit = () => {
-        const updatedList = offerList.map(offer => {
-            if (offer.id === selectedOffer.id) {
-                return {
-                    ...offer,
-                    ...newOfferData
-                };
-            }
-            return offer;
-        });
-        setOfferList(updatedList);
-        setShowUpdateModal(false);
-        setNewOfferData({});
-    };
+    // const handleUpdateModalSubmit = () => {
+    //     const updatedList = offerList.map(offer => {
+    //         if (offer.id === selectedOffer.id) {
+    //             return {
+    //                 ...offer,
+    //                 ...newOfferData
+    //             };
+    //         }
+    //         return offer;
+    //     });
+    //     setOfferList(updatedList);
+    //     setShowUpdateModal(false);
+    //     setNewOfferData({});
+    // };
     
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setNewOfferData(prevData => ({
-            ...prevData,
-            [name]: value
-        }));
-    };
+    // const handleInputChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setNewOfferData(prevData => ({
+    //         ...prevData,
+    //         [name]: value
+    //     }));
+    // };
 
     return (
-        <div className="font-serif">
+        <div>
             <div className="flex gap-2">
                 {offerList.map((offer) => (
                     <div key={offer.id} className="inline-block relative">
-                        <div className="absolute top-[-2%] bg-gray-600 right-0 flex gap-2 mt-2 mr-2">
+                        {/* <div className="absolute top-[-2%] bg-gray-600 right-0 flex gap-2 mt-2 mr-2">
                             <FontAwesomeIcon icon={faPlus} onClick={handleAddOffer} className="text-green-500  cursor-pointer"  />
                             <FontAwesomeIcon icon={faTrash} onClick={() => handleDeleteOffer(offer.id)} className="text-red-500 cursor-pointer"  />
                             <FontAwesomeIcon icon={faEdit} onClick={() => handleUpdateOffer(offer)} className="text-blue-500 cursor-pointer" />
-                        </div>
+                        </div> */}
                         <div className="text-white border-2 rounded-xl p-2 w-60  mt-2 flex flex-col dark:bg-gray-900">
                             <div className="flex justify-between py-2">
                                 <div>
@@ -120,16 +120,16 @@ const Rechargecard = ( { offerlists } ) => {
                                 <h1>Subscriptions:</h1>
                                 <h1>{offer.subscription}</h1>
                             </div>
-                            {/* <div className="py-4 w-full justify-center items-center mx-auto">
-                                <Link to={`/user/recharge/${offer.id}`} className="border px-[25%] py-1 bg-blue-600 hover:bg-blue-700 rounded-2xl">
+                            <div className="py-4 w-full justify-center items-center mx-auto">
+                                <Link to={`/user/recharge/${offer.id-1}`} className="border px-[25%] py-1 bg-blue-600 hover:bg-blue-700 rounded-2xl">
                                     Recharge
                                 </Link>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
                 ))}
             </div>
-            {showAddModal && (
+            {/* {showAddModal && (
                 <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
                     <div className="bg-white p-4 rounded-lg">
                         <h2 className="text-xl font-semibold mb-2">Add New Offer</h2>
@@ -137,7 +137,7 @@ const Rechargecard = ( { offerlists } ) => {
                         <input type="text" name="validity" placeholder="Validity" onChange={handleInputChange} />
                         <input type="text" name="subscription" placeholder="Subscription" onChange={handleInputChange} />
                         <input type="text" name="benefits" placeholder="Benefits" onChange={handleInputChange} />
-                        {/* Add other input fields as needed */}
+                
                         <div className="flex justify-end mt-4">
                             <button onClick={handleAddModalClose} className="mr-2">Cancel</button>
                             <button onClick={handleAddModalSubmit}>Submit</button>
@@ -149,31 +149,26 @@ const Rechargecard = ( { offerlists } ) => {
                 <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
                     <div className="bg-white p-4 rounded-lg">
                         <h2 className="text-xl font-semibold mb-2">Update Offer</h2>
-                        <div className='grid grid-cols-2'>
-                        {/* <div> */}
-                            <input type="text" name="price" placeholder="Price" defaultValue={selectedOffer.price} onChange={handleInputChange} />
-                        {/* <div/> */}
+                        <input type="text" name="price" placeholder="Price" defaultValue={selectedOffer.price} onChange={handleInputChange} />
                         <input type="text" name="validity" placeholder="Validity" defaultValue={selectedOffer.validity} onChange={handleInputChange} />
-                        
                         <input type="text" name="subscription" placeholder="subscription" defaultValue={selectedOffer.subscription} onChange={handleInputChange} />
                         <input type="text" name="benefits" placeholder="Benefits" defaultValue={selectedOffer.benefits} onChange={handleInputChange} />
-                        </div>
-                        {/* Add other input fields as needed */}
+                     
                         <div className="flex justify-end mt-4">
                             <button onClick={handleUpdateModalClose} className="mr-2">Cancel</button>
                             <button onClick={handleUpdateModalSubmit}>Submit</button>
                         </div>
                     </div>
                 </div>
-            )}
+            )} */}
         </div>
     );
 }
-Rechargecard.propTypes = {
+Userrechargecard.propTypes = {
     offerlists : PropTypes.array.isRequired,
 };
 
-export default Rechargecard;
+export default Userrechargecard;
 
 
 

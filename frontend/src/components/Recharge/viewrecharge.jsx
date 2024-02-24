@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 const offerList = [
   {
+    id : 1,
     price: "₹ 1499",
     validity: "2 Months",
     subscription: "Disney Hotstar",
@@ -12,12 +13,29 @@ const offerList = [
     link: "#",
   },
   {
+    id : 2,
     price: "₹ 999",
     validity: "1 Month",
     subscription: "Amazon Prime",
     benefits: "High-Speed Internet",
     link: "#",
   },
+  {
+      id : 3,
+      price: "₹ 799",
+      validity: "2 Months",
+      subscription: "Disney Hotstar",
+      benefits: "Truly Unlimited",
+      link: "#",
+    },
+    {
+      id : 4,
+      price: "₹ 299",
+      validity: "1 Month",
+      subscription: "Amazon Prime",
+      benefits: "High-Speed Internet",
+      link: "#",
+    },
   // Add more offers as needed
 ];
 
