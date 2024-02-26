@@ -1,4 +1,4 @@
-// import React from 'react';
+
 import Rechargecard from "../Cards/Rechargecards/rechargecard";
 
 const initialOfferList = [

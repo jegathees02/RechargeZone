@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-RechargezoneApplication<rechargezone>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.rechargezone.rechargezone.RechargezoneApplication",
+            "projectName": "rechargezone",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

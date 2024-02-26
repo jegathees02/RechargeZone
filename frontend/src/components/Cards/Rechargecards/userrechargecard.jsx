@@ -1,94 +1,15 @@
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types'
-import { useState } from 'react';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faPlus, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
-// const initialOfferList = [
-//     {
-//       id: 1,
-//       price: "₹ 1499",
-//       validity: "2 Months",
-//       subscription: "Disney Hotstar",
-//       benefits: "Truly Unlimited",
-//       link: "#",
-//     },
-//     {
-//       id: 2,
-//       price: "₹ 999",
-//       validity: "1 Month",
-//       subscription: "Amazon Prime",
-//       benefits: "High-Speed Internet",
-//       link: "#",
-//     },
-// ];
+
 
 const Userrechargecard = ( { offerlists } ) => {
-    const [offerList, setOfferList] = useState(offerlists);
-    // const [showAddModal, setShowAddModal] = useState(false);
-    const [newOfferData, setNewOfferData] = useState({});
-    // const [showUpdateModal, setShowUpdateModal] = useState(false);
-    const [selectedOffer, setSelectedOffer] = useState(null);
 
-    // const handleAddOffer = () => {
-    //     setShowAddModal(true);
-    // };
-
-    // const handleDeleteOffer = (id) => {
-    //     const updatedList = offerList.filter(offer => offer.id !== id);
-    //     setOfferList(updatedList);
-    // };
-
-    // const handleUpdateOffer = (offer) => {
-    //     setSelectedOffer(offer);
-    //     setShowUpdateModal(true);
-    // };
-    
-    // const handleAddModalClose = () => {
-    //     setShowAddModal(false);
-    // };
-
-    // const handleUpdateModalClose = () => {
-    //     setShowUpdateModal(false);
-    // };
-    
-    // const handleAddModalSubmit = () => {
-    //     const newOffer = {
-    //         id: offerList.length + 1,
-    //         ...newOfferData
-    //     };
-    //     setOfferList([...offerList, newOffer]);
-    //     setShowAddModal(false);
-    //     setNewOfferData({});
-    // };
-
-    // const handleUpdateModalSubmit = () => {
-    //     const updatedList = offerList.map(offer => {
-    //         if (offer.id === selectedOffer.id) {
-    //             return {
-    //                 ...offer,
-    //                 ...newOfferData
-    //             };
-    //         }
-    //         return offer;
-    //     });
-    //     setOfferList(updatedList);
-    //     setShowUpdateModal(false);
-    //     setNewOfferData({});
-    // };
-    
-    // const handleInputChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setNewOfferData(prevData => ({
-    //         ...prevData,
-    //         [name]: value
-    //     }));
-    // };
 
     return (
         <div>
             <div className="flex gap-2">
-                {offerList.map((offer) => (
+                {offerlists.map((offer) => (
                     <div key={offer.id} className="inline-block relative">
                         {/* <div className="absolute top-[-2%] bg-gray-600 right-0 flex gap-2 mt-2 mr-2">
                             <FontAwesomeIcon icon={faPlus} onClick={handleAddOffer} className="text-green-500  cursor-pointer"  />
@@ -129,38 +50,6 @@ const Userrechargecard = ( { offerlists } ) => {
                     </div>
                 ))}
             </div>
-            {/* {showAddModal && (
-                <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
-                    <div className="bg-white p-4 rounded-lg">
-                        <h2 className="text-xl font-semibold mb-2">Add New Offer</h2>
-                        <input type="text" name="price" placeholder="Price" onChange={handleInputChange} />
-                        <input type="text" name="validity" placeholder="Validity" onChange={handleInputChange} />
-                        <input type="text" name="subscription" placeholder="Subscription" onChange={handleInputChange} />
-                        <input type="text" name="benefits" placeholder="Benefits" onChange={handleInputChange} />
-                
-                        <div className="flex justify-end mt-4">
-                            <button onClick={handleAddModalClose} className="mr-2">Cancel</button>
-                            <button onClick={handleAddModalSubmit}>Submit</button>
-                        </div>
-                    </div>
-                </div>
-            )}
-            {showUpdateModal && (
-                <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
-                    <div className="bg-white p-4 rounded-lg">
-                        <h2 className="text-xl font-semibold mb-2">Update Offer</h2>
-                        <input type="text" name="price" placeholder="Price" defaultValue={selectedOffer.price} onChange={handleInputChange} />
-                        <input type="text" name="validity" placeholder="Validity" defaultValue={selectedOffer.validity} onChange={handleInputChange} />
-                        <input type="text" name="subscription" placeholder="subscription" defaultValue={selectedOffer.subscription} onChange={handleInputChange} />
-                        <input type="text" name="benefits" placeholder="Benefits" defaultValue={selectedOffer.benefits} onChange={handleInputChange} />
-                     
-                        <div className="flex justify-end mt-4">
-                            <button onClick={handleUpdateModalClose} className="mr-2">Cancel</button>
-                            <button onClick={handleUpdateModalSubmit}>Submit</button>
-                        </div>
-                    </div>
-                </div>
-            )} */}
         </div>
     );
 }

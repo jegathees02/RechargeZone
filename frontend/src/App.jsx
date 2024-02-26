@@ -15,6 +15,7 @@ import ViewrechargePage from "./pages/user/RechargePage/viewrechargePage";
 import UserHomePage from "./pages/user/Homepage/userHomePage";
 import UserprofilePage from "./pages/user/Profile/userprofilePage";
 import UserhistoryPage from "./pages/user/History/userhistoryPage";
+import UserrechargeotherPage from "./pages/user/RechargePage/userrechargeotherPage";
 
 
 //admin imports
@@ -42,6 +43,7 @@ function App() {
         <Route path="/user/recharge" element={<UserrechargePage/>} />
         <Route path="/user/profile" element={<UserprofilePage/>} />
         <Route path="user/recharge/:id" element={<ViewrechargePage/>} />
+        <Route path="user/recharge/other" element={<UserrechargeotherPage/>} />
         <Route path="user/history" element={<UserhistoryPage/>} />
         {/* </Route> */}
 

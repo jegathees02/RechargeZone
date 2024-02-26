@@ -3,10 +3,10 @@
   // import { Carousel } from 'react-responsive-carousel';
   import PropTypes from 'prop-types';
   import { Link } from 'react-router-dom';
-  import Slider from "react-slick";
+  // import Slider from "react-slick";
   import "slick-carousel/slick/slick.css";
   import "slick-carousel/slick/slick-theme.css";
-  import Rechargecard from '../Cards/Rechargecards/rechargecard';
+  // import Rechargecard from '../Cards/Rechargecards/rechargecard';
   import Userrechargecard from '../Cards/Rechargecards/userrechargecard';
   // import "slick-carousel/slick/slick.css";
   // import "slick-carousel/slick/slick-theme.css";
@@ -47,13 +47,13 @@
       // Add more offers as needed
   ];
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4, // Adjust based on the number of items
-    slidesToScroll: 1
-  };
+  // const settings = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 4, // Adjust based on the number of items
+  //   slidesToScroll: 1
+  // };
 
   const Recharge = () => {
     return (
