@@ -2,8 +2,14 @@ package com.rechargezone.rechargezone.model;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,6 +38,10 @@ public class planData {
     private String planTalktime;
     private String planSms;
     private String plansubscription;
+
+    @OneToMany(mappedBy = "planData")
+    @JsonIgnore
+    private List<userHistory> userHistory;
 
     
 }
