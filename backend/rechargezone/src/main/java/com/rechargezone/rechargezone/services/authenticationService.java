@@ -62,7 +62,8 @@ public class authenticationService {
     }
 
     public userDto loginUser(userDto dto) {
-        userMain userMain = usermainrepo.findByEmail(dto.getEmail());
+        userMain userMain = new userMain();
+        // userMain userMain = usermainrepo.findByEmail(dto.getEmail());
         if (userMain != null && userMain.getPassword().equals(dto.getPassword())) {
             userDto userDto = new userDto();
             userDto.setEmail(userMain.getEmail());

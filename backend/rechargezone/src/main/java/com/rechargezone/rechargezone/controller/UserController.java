@@ -23,14 +23,24 @@ public class UserController {
 
 
     @GetMapping("/getAllData")
-    public List<planDataDTO> getAllDatas () {
+    public List<planDataDTO> getAllPlans () {
         return userservice.getAllData();
     }
 
-    @GetMapping("/getPlanDataByOperatorAndData") 
-    public List<planDataDTO> getPlanDataByOperatorAndData(@RequestParam String operator, @RequestParam String data) {
-        return userservice.getPlanDataByOperatorAndData(operator, data);
+    @GetMapping("/getplansbyoperatoranddata/{operator}/{data}")
+    public List<planDataDTO> getByOperatorAndData(@PathVariable String operator, @PathVariable String data) {
+        return userservice.getPlansByOperatorAndData(operator, data);
     }
+
+    @GetMapping("/getplansbyoperatoranddataandtype/{operator}/{data}/{type}")
+    public List<planDataDTO> getByOperatorAndDataAndType(@PathVariable String operator, @PathVariable String data, @PathVariable String type) {
+        return userservice.getPlansByOperatorAndDataAndType(operator, data, type);
+    }
+
+    // @GetMapping("/getPlanDataByOperatorAndData") 
+    // public List<planDataDTO> getPlanDataByOperatorAndData(@RequestParam String operator, @RequestParam String data) {
+    //     return userservice.getPlanDataByOperatorAndData(operator, data);
+    // }
 
    
     
