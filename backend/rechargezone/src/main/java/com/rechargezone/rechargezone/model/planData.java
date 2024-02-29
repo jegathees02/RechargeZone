@@ -39,9 +39,9 @@ public class planData {
     private String planSms;
     private String plansubscription;
 
-    @OneToMany(mappedBy = "planData")
-    @JsonIgnore
-    private List<userHistory> userHistory;
+    // @OneToMany(mappedBy = "planData")
+    // @JsonIgnore
+    // private List<userHistory> userHistory;
 
     
 }

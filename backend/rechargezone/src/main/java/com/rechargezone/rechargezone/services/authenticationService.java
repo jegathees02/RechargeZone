@@ -34,14 +34,16 @@ public class authenticationService {
         usermainrepo.save(userMain);
         // Long userId = userMain.getId();
 
-        if("admin".equals(dto.getRole())) {
+        if(dto.getRole().equals("admin")) {
             adminDetails admin = new adminDetails();
             // admin.setId(userId);
             admin.setFname(dto.getFname());
             admin.setLname(dto.getLname());
             admin.setPhone(dto.getPhone());
+            admin.setUser(userMain);
             // adminDetails admin = UserMapper.INSTANCE.dtoToAdminDetails(dto);
-            adminrepo.save(admin);
+            adminDetails result = adminrepo.save(admin);
+            System.out.println(result);
         }
         else{
             userDetails user = new userDetails();
@@ -52,6 +54,7 @@ public class authenticationService {
             user.setServiceProvider(dto.getServiceProvider());
             user.setAddress(dto.getAddress());
             user.setCity(dto.getCity());
+            user.setUser(userMain);
 
             // userDetails user = UserMapper.INSTANCE.dtoToUserDetails(dto);
             userrepo.save(user);
@@ -66,8 +69,9 @@ public class authenticationService {
             userDto.setPassword(userMain.getPassword());
             userDto.setRole(userMain.getRole());
             
-            if ("admin".equals(userMain.getRole())) {
-                adminDetails admin = adminrepo.findById(userMain.getId());
+            if (userMain.getRole().equals("admin")) {
+                userDto admin = new userDto();
+                // adminDetails admin = adminrepo.findById(userMain.getId());
                 userDto.setFname(admin.getFname());
                 userDto.setLname(admin.getLname());
                 userDto.setPhone(admin.getPhone());
@@ -88,37 +92,55 @@ public class authenticationService {
 
 
     public List<userDto> getAllUsers() {
+        // return userrepo.findAll();
         List<userDto> list = new ArrayList<>();
-        
         List<userMain> userMainList = usermainrepo.findAll();
-        
-        for (userMain userMain : userMainList) {
+
+        for(userMain usermain : userMainList) {
             userDto dto = new userDto();
-            dto.setEmail(userMain.getEmail());
-            dto.setPassword(userMain.getPassword());
-            dto.setRole(userMain.getRole());
-            
-            if ("admin".equals(userMain.getRole())) {
-                adminDetails admin = adminrepo.findById(userMain.getId());
-                dto.setFname(admin.getFname());
-                dto.setLname(admin.getLname());
-                dto.setPhone(admin.getPhone());
-            } else {
-                userDetails user = userrepo.findById(userMain.getId());
-                dto.setFname(user.getFname());
-                dto.setLname(user.getLname());
-                dto.setPhone(user.getPhone());
-                dto.setServiceProvider(user.getServiceProvider());
-                dto.setAddress(user.getAddress());
-                dto.setCity(user.getCity());
-            }
-            
-            list.add(dto);
+            dto.setEmail(usermain.getEmail());
+            dto.setPassword(usermain.getPassword());
+            dto.setRole(usermain.getRole());
+            // if(usermain.getRole().equals("admin")) 
         }
+
         
+        // List<userMain> userMainList = usermainrepo.findAll();
+        
+        // for (userMain userMain : userMainList) {
+        //     userDto dto = new userDto();
+        //     dto.setEmail(userMain.getEmail());
+        //     dto.setPassword(userMain.getPassword());
+        //     dto.setRole(userMain.getRole());
+            
+        //     if (userMain.getRole().equals("admin")) {
+        //         adminDetails admin = adminrepo.findById(userMain.getId());
+        //         System.out.println(admin);
+        //         // System.out.println(admin.getFname());
+        //         // dto.setFname(admin.getFname());
+        //         // dto.setLname(admin.getLname());
+        //         // dto.setPhone(admin.getPhone());
+        //     } else {
+        //         userDetails user = userrepo.findById(userMain.getId());
+        //         System.out.println(user);
+        //         System.out.println(user.getFname());
+                
+        //         // dto.setFname(user.getFname());
+        //         // dto.setLname(user.getLname());
+        //         // dto.setPhone(user.getPhone());
+        //         // dto.setServiceProvider(user.getServiceProvider());
+        //         // dto.setAddress(user.getAddress());
+        //         // dto.setCity(user.getCity());
+        //     }
+            
+        //     list.add(dto);
+        // }
         return list;
     }
 
-    
-    
+
+
+    public List<adminDetails> getAllAdmins(long id) {
+        return adminrepo.findById(id);
+    }
 }

@@ -23,7 +23,7 @@ import lombok.Setter;
 public class adminDetails {
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long admin_id;
     private String Fname;
     private String Lname;
     private String phone;

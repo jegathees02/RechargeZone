@@ -31,7 +31,7 @@ import lombok.Setter;
 public class userDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long user_id;
     private String Fname;
     private String Lname;
     private String phone;
