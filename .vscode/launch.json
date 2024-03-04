@@ -8,6 +8,17 @@
             "mainClass": "com.rechargezone.rechargezone.RechargezoneApplication",
             "projectName": "rechargezone",
             "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=43521 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=rechargezone"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-RechargezoneApplication<com.rechargezone-rechargezone>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.rechargezone.rechargezone.RechargezoneApplication",
+            "projectName": "com.rechargezone-rechargezone",
+            "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
     ]

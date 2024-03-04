@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rechargezone.rechargezone.dto.userDto;
+import com.rechargezone.rechargezone.dto.Response.AuthenticationResponse;
 import com.rechargezone.rechargezone.model.adminDetails;
 import com.rechargezone.rechargezone.model.userDetails;
 import com.rechargezone.rechargezone.model.userMain;
@@ -31,13 +32,13 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public userDto loginUser(@RequestBody userDto dto) {
+    public AuthenticationResponse loginUser(@RequestBody userDto dto) {
         return authservice.loginUser(dto);
     }
 
     @PostMapping("/register")
-    public void registerUser(@RequestBody userDto dto) {
-        authservice.registerUser(dto);
+    public String registerUser(@RequestBody userDto dto) {
+        return authservice.register(dto);
     }
 
      @GetMapping("/getbyid/{id}")

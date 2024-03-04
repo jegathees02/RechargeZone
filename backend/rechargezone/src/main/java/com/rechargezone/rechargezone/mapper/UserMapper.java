@@ -10,7 +10,7 @@ public class UserMapper {
         userMain user = new userMain();
         user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());
-        user.setRole(dto.getRole());
+        // userMain.Role = dto.getRole() == "user" ? userMain.Role.USER : userMain.Role.ADMIN;
         return user;
     }
 

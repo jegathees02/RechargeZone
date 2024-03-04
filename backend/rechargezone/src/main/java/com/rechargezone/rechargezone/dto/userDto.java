@@ -1,5 +1,7 @@
 package com.rechargezone.rechargezone.dto;
 
+import com.rechargezone.rechargezone.model.Role;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

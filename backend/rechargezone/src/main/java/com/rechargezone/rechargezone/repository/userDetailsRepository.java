@@ -8,7 +8,8 @@ import com.rechargezone.rechargezone.model.userDetails;
 import com.rechargezone.rechargezone.model.userMain;
 
 public interface userDetailsRepository extends JpaRepository<userDetails, Long>{
-    public Optional<userMain> findByEmail(String email);
+    // public Optional<userMain> findByEmail(String email);
+    
     public userDetails findById(long id);
     
 }
