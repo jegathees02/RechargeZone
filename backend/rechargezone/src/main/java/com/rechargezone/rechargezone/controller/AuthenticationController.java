@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rechargezone.rechargezone.dto.userDto;
@@ -12,6 +13,8 @@ import com.rechargezone.rechargezone.model.adminDetails;
 import com.rechargezone.rechargezone.model.userDetails;
 import com.rechargezone.rechargezone.model.userMain;
 import com.rechargezone.rechargezone.services.authenticationService;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,9 +45,11 @@ public class AuthenticationController {
     }
 
      @GetMapping("/getbyid/{id}")
-    public List<adminDetails> getByid(@PathVariable("id") long id) {
-        return authservice.getAllAdmins(id);
+    public userDetails getByid(@PathVariable("id") long id) {
+        return authservice.getAllUsers(id);
     }
+
+    
     
     
     

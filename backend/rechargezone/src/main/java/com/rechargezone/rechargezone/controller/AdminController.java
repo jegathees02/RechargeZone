@@ -3,6 +3,7 @@ package com.rechargezone.rechargezone.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,34 +27,38 @@ public class AdminController {
     private adminService adminservice;
 
 
+    @PreAuthorize("hasAuthority('admin')")
     @GetMapping("/getplans")
     public List<planDataDTO> getAllPlans() {
         return adminservice.getAllData();
     }
 
+    @PreAuthorize("hasAuthority('admin')")
     @GetMapping("/getplansbyoperatoranddata/{operator}/{data}")
     public List<planDataDTO> getByOperatorAndData(@PathVariable String operator, @PathVariable String data) {
         return adminservice.getPlansByOperatorAndData(operator, data);
     }
 
+    @PreAuthorize("hasAuthority('admin')")
     @GetMapping("/getplansbyoperatoranddataandtype/{operator}/{data}/{type}")
     public List<planDataDTO> getByOperatorAndDataAndType(@PathVariable String operator, @PathVariable String data, @PathVariable String type) {
         return adminservice.getPlansByOperatorAndDataAndType(operator, data, type);
     }
     
     
-    
-
+    @PreAuthorize("hasAuthority('admin')")
     @PostMapping("/addplans")
     public String addPlanData(@RequestBody planDataDTO dto) {
         return adminservice.addPlans(dto);
     }
     
+    @PreAuthorize("hasAuthority('admin')")
     @PutMapping("updateplans/{id}")
     public String updatePlans(@PathVariable long id, @RequestBody planDataDTO entity) {
         return adminservice.updatePlans(id, entity);
     }
 
+    @PreAuthorize("hasAuthority('admin')")
     @DeleteMapping("deleteplans/{id}")
     public String deletePlans(@PathVariable long id) {
         return adminservice.deletePlans(id);

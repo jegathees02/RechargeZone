@@ -22,7 +22,7 @@ import lombok.Setter;
 @Setter
 public class adminDetails {
     @Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long admin_id;
     private String Fname;
     private String Lname;

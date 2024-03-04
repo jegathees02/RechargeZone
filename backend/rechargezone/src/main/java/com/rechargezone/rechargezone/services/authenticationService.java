@@ -100,6 +100,7 @@ public class authenticationService {
                 }
                 userMain savedUser = usermainrepo.save(user);
                 userDetails userModel = new userDetails();
+                userModel.setUser_id(user.getId());
                 userModel.setFname(request.getFname());
                 userModel.setLname(request.getLname());
                 userModel.setPhone(request.getPhone());
@@ -140,6 +141,7 @@ public class authenticationService {
         }
         userMain savedUser = usermainrepo.save(user);
         adminDetails admin = new adminDetails();
+        admin.setAdmin_id(user.getId());
         admin.setAdmin_id(savedUser.getId());
         admin.setFname(request.getFname());
         admin.setLname(request.getLname());
@@ -225,55 +227,59 @@ public class authenticationService {
     public List<userDto> getAllUsers() {
         // return userrepo.findAll();
         List<userDto> list = new ArrayList<>();
-        List<userDetails> userMainList = userrepo.findAll();
+        // List<userDetails> userMainList = userrepo.findAll();
 
-        for(userDetails usermain : userMainList) {
-            userDto dto = new userDto();
-            // dto.setEmail(usermain.getEmail());
-            // dto.setPassword(usermain.getPassword());
-            // dto.setRole(usermain.getRole().toString());
-            // dto.setRole(usermain.getRole());
-            dto.setFname(usermain.getFname());
-            dto.setLname(usermain.getLname());
-            dto.setPhone(usermain.getPhone());
-            dto.setServiceProvider(usermain.getServiceProvider());
-            dto.setAddress(usermain.getAddress());
-            dto.setCity(usermain.getCity());
-            list.add(dto);
-            // if(usermain.getRole().equals("admin")) 
-        }
-
-        
-        // List<userMain> userMainList = usermainrepo.findAll();
-        
-        // for (userMain userMain : userMainList) {
+        // for(userDetails usermain : userMainList) {
         //     userDto dto = new userDto();
-        //     dto.setEmail(userMain.getEmail());
-        //     dto.setPassword(userMain.getPassword());
-        //     dto.setRole(userMain.getRole());
-            
-        //     if (userMain.getRole().equals("admin")) {
-        //         adminDetails admin = adminrepo.findById(userMain.getId());
-        //         System.out.println(admin);
-        //         // System.out.println(admin.getFname());
-        //         // dto.setFname(admin.getFname());
-        //         // dto.setLname(admin.getLname());
-        //         // dto.setPhone(admin.getPhone());
-        //     } else {
-        //         userDetails user = userrepo.findById(userMain.getId());
-        //         System.out.println(user);
-        //         System.out.println(user.getFname());
-                
-        //         // dto.setFname(user.getFname());
-        //         // dto.setLname(user.getLname());
-        //         // dto.setPhone(user.getPhone());
-        //         // dto.setServiceProvider(user.getServiceProvider());
-        //         // dto.setAddress(user.getAddress());
-        //         // dto.setCity(user.getCity());
-        //     }
-            
+        //     // dto.setEmail(usermain.getEmail());
+        //     // dto.setPassword(usermain.getPassword());
+        //     // dto.setRole(usermain.getRole().toString());
+        //     // dto.setRole(usermain.getRole());
+        //     dto.setFname(usermain.getFname());
+        //     dto.setLname(usermain.getLname());
+        //     dto.setPhone(usermain.getPhone());
+        //     dto.setServiceProvider(usermain.getServiceProvider());
+        //     dto.setAddress(usermain.getAddress());
+        //     dto.setCity(usermain.getCity());
         //     list.add(dto);
+        //     // if(usermain.getRole().equals("admin")) 
         // }
+
+        
+        List<userMain> userMainList = usermainrepo.findAll();
+        
+        for (userMain userMain : userMainList) {
+            if(userMain.getRole().equals("admin")) continue;
+            userDto dto = new userDto();
+            dto.setId(userMain.getId());
+            dto.setEmail(userMain.getEmail());
+            dto.setPassword(userMain.getPassword());
+            dto.setRole(userMain.getRole());
+            
+            if (userMain.getRole().equals("admin")) {
+                List<adminDetails> admins = adminrepo.findById(userMain.getId());
+                // System.out.println(admin);
+                for(adminDetails admin : admins) {
+                // System.out.println(admin.getFname());
+                    dto.setFname(admin.getFname());
+                    dto.setLname(admin.getLname());
+                    dto.setPhone(admin.getPhone());
+                }
+            } else {
+                userDetails user = userrepo.findById(userMain.getId());
+                // System.out.println(user);
+                // System.out.println(user.getFname());
+                
+                dto.setFname(user.getFname());
+                dto.setLname(user.getLname());
+                dto.setPhone(user.getPhone());
+                dto.setServiceProvider(user.getServiceProvider());
+                dto.setAddress(user.getAddress());
+                dto.setCity(user.getCity());
+            }
+            
+            list.add(dto);
+        }
         return list;
     }
 
@@ -282,4 +288,71 @@ public class authenticationService {
     public List<adminDetails> getAllAdmins(long id) {
         return adminrepo.findById(id);
     }
+
+    public userDetails getAllUsers(long id) {
+        return userrepo.findById(id);
+    }
+
+    public Optional<userMain> getUserById(long id) {
+        return usermainrepo.findById(id);
+    }
+
+    public Optional<userMain> getUserByEmail(String email) {
+        return usermainrepo.findByEmail(email);
+    }
+
+public void updateUser(userDto dto) {
+    userMain userMain = usermainrepo.findById(dto.getId()).orElse(null);
+    if (userMain != null) {
+        userMain.setEmail(dto.getEmail());
+        userMain.setPassword(dto.getPassword());
+        userMain.setRole(dto.getRole());
+        usermainrepo.save(userMain);
+
+        if (dto.getRole().equals("admin")) {
+            // adminDetails admin = adminrepo.findByUser(userMain).orElse(null);
+            List<adminDetails> admins = adminrepo.findById(dto.getId());
+            if (admins != null) {
+                for(adminDetails admin : admins) {
+                    admin.setFname(dto.getFname());
+                    admin.setLname(dto.getLname());
+                    admin.setPhone(dto.getPhone());
+                    adminrepo.save(admin);
+                }
+            }
+        } else {
+            // userDetails user = userrepo.findByUser(userMain).orElse(null);
+            userDetails user  = userrepo.findById(dto.getId());
+            if (user != null) {
+                // for(userDetails user : users) {
+                    user.setFname(dto.getFname());
+                    user.setLname(dto.getLname());
+                    user.setPhone(dto.getPhone());
+                    user.setServiceProvider(dto.getServiceProvider());
+                    user.setAddress(dto.getAddress());
+                    user.setCity(dto.getCity());
+                    userrepo.save(user);
+                // }
+            }
+        }
+    }
+}
+
+public void updateAdmin(userDto dto) {
+    List<adminDetails> admins = adminrepo.findById(dto.getId());
+    if (admins != null) {
+        for(adminDetails admin : admins) {
+            admin.setFname(dto.getFname());
+            admin.setLname(dto.getLname());
+            admin.setPhone(dto.getPhone());
+            adminrepo.save(admin);
+        }
+    }
+}
+
+public String deleteUser(long id) {
+    userrepo.deleteById(id);
+    usermainrepo.deleteById(id);
+    return "deleted";
+}
 }
