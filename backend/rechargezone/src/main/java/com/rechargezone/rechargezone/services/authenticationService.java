@@ -165,16 +165,16 @@ public class authenticationService {
         var userOptional = usermainrepo.findByEmail(request.getEmail());
         if (userOptional.isPresent()) {
             var user = userOptional.get();
-            if (request.getRole().equals("admin") ) {
-                return AuthenticationResponse.builder()
-                                            .token("Invalid Credentials")
-                                            .build();
-            }
-            if (request.getRole().equals("user")) {
-                return AuthenticationResponse.builder()
-                                            .token("Invalid Credentials")
-                                            .build();
-            }
+            // if (request.getRole().equals("admin") ) {
+            //     return AuthenticationResponse.builder()
+            //                                 .token("Invalid Credentials")
+            //                                 .build();
+            // }
+            // if (request.getRole().equals("user")) {
+            //     return AuthenticationResponse.builder()
+            //                                 .token("Invalid Credentials")
+            //                                 .build();
+            // }
             var jwttoken = jwtService.generateToken(user.getEmail());
             var userRole = user.getRole().toString().toLowerCase();
             return AuthenticationResponse.builder()
@@ -225,14 +225,21 @@ public class authenticationService {
     public List<userDto> getAllUsers() {
         // return userrepo.findAll();
         List<userDto> list = new ArrayList<>();
-        List<userMain> userMainList = usermainrepo.findAll();
+        List<userDetails> userMainList = userrepo.findAll();
 
-        for(userMain usermain : userMainList) {
+        for(userDetails usermain : userMainList) {
             userDto dto = new userDto();
-            dto.setEmail(usermain.getEmail());
-            dto.setPassword(usermain.getPassword());
-            dto.setRole(usermain.getRole().toString());
+            // dto.setEmail(usermain.getEmail());
+            // dto.setPassword(usermain.getPassword());
+            // dto.setRole(usermain.getRole().toString());
             // dto.setRole(usermain.getRole());
+            dto.setFname(usermain.getFname());
+            dto.setLname(usermain.getLname());
+            dto.setPhone(usermain.getPhone());
+            dto.setServiceProvider(usermain.getServiceProvider());
+            dto.setAddress(usermain.getAddress());
+            dto.setCity(usermain.getCity());
+            list.add(dto);
             // if(usermain.getRole().equals("admin")) 
         }
 
