@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.rechargezone.rechargezone.dto.planDataDTO; // Import the planDataDTO class
 import com.rechargezone.rechargezone.dto.userDto;
 import com.rechargezone.rechargezone.model.adminDetails;
+import com.rechargezone.rechargezone.model.userHistory;
 
 import java.util.List; // Import the List class
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,6 +52,20 @@ public class UserController {
     @GetMapping("/getplansbyoperatoranddataandtype/{operator}/{data}/{type}")
     public List<planDataDTO> getByOperatorAndDataAndType(@PathVariable String operator, @PathVariable String data, @PathVariable String type) {
         return userservice.getPlansByOperatorAndDataAndType(operator, data, type);
+    }
+
+    @PreAuthorize("hasAuthority('user')")
+    @GetMapping("/getRechargeById/{id}") 
+    public List<userHistory> getRechargeById(@PathVariable long id) {
+        return userservice.getHistoryByUserId(id);  
+    }
+
+    @PreAuthorize("hasAuthority('user')")
+    @PostMapping("/recharge")
+    public String recharge(@RequestParam long userId, @RequestParam long planId) {
+        // return userservice.recharge(entity);
+        userservice.addHistoryData(userId, planId);
+        return "added";
     }
 
     @PreAuthorize("hasAuthority('user')")
