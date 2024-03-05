@@ -45,8 +45,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("**").permitAll())
-                .authorizeHttpRequests(requests -> requests.requestMatchers("/auth/**")
+                        .requestMatchers("/swagger-ui/**",
+                        "/swagger-ui.html/",
+                        "/v3/api-docs/**","/auth/**").permitAll())
+                .authorizeHttpRequests(requests -> requests.requestMatchers("/auth/**","/user/**","/admin/**")
                         .authenticated())
                 .sessionManagement(management -> management
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
