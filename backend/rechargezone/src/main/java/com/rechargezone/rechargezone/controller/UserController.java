@@ -9,6 +9,7 @@ import com.rechargezone.rechargezone.services.adminService;
 import com.rechargezone.rechargezone.services.authenticationService;
 import com.rechargezone.rechargezone.services.userService;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173/**")
 @RequestMapping("/user")
 public class UserController {
     @Autowired

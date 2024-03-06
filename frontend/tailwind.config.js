@@ -5,6 +5,7 @@ module.exports = {
   fontFamily: {
     sans: ['Inter', 'sans-serif'],
     mono: ['Kode Mono'],
+    madimi: ['Madimi One', 'sans-serif']
   },
   colors: {
     'regal-blue': '#243c5a',
