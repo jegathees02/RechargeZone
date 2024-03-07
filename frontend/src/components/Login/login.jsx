@@ -1,37 +1,106 @@
-import { useState  } from "react";
+import { useState,useEffect  } from "react";
 import { Link , useNavigate } from "react-router-dom";
 import "../../../src/index.css";
 import loginImage from "../../../src/assets/images/login.gif";
+// import Skeleton from 'react-loading-skeleton';
+import LoginSkeleton from "../Skeleton/loginSkeleton";
 
-import { useDispatch } from "react-redux"; 
-import { setName } from "../../redux/userRoleSlice"; 
+// import { useDispatch } from "react-redux"; 
+// import { setName } from "../../redux/userRoleSlice"; 
+
+import AdminService from "../../Services/AdminService";
+import UserService from "../../Services/UserService";
 
 
 const Login = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
-  const[role,setRole] = useState("user");
-    const[email,setEmail] = useState("");
-    const [password, setPassword]=useState("");
-    const handleLogin =(e) => {
+  const [loading,setLoading] = useState(false);
+  // const[role,setRole] = useState("user");
+  // const[email,setEmail] = useState("");
+  // const [password, setPassword]=useState("");
+  const [userData,setUserData] = useState({
+    email:"",
+    password:"",
+    role:""
+  });
+
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false); // After 2 seconds, set loading to false
+    }, 2000);
+
+    return () => clearTimeout(timer); // Clean up the timer
+  }, []); 
+
+  // const handleChange = (e) => {
+  //   const {name, value} = e.target;
+  //   setUserData(prevState => ({
+  //     ...prevState,
+  //     [name] : value
+  //   }));
+  // }
+
+    const handleLogin = async (e) => {
+      console.log(userData);
       e.preventDefault();
-      console.log(email);
-      console.log(password);
-      if(role === 'admin') {
-        if(email==="admin@gmail.com" && password==="12345"){
-          navigate('/admin/prepaid')
+      setLoading(true);
+      console.log(userData.email);
+      console.log(userData.password);
+      if(userData.role === 'user') {
+        try {
+          const response = await UserService.userLogin({
+            email:userData.email,
+            password:userData.password,
+            role:userData.role
+          })
+
+          localStorage.setItem('token',response.data.token);
+          if(response.data.role === "user") {
+            navigate('/home');
+          }
+          else {
+            alert("Invalid Credentials");
+          }
         }
+        catch (e) {
+          alert(e);
+        }
+        // if(email==="admin@gmail.com" && password==="12345"){
+        //   navigate('/admin/prepaid')
+        // }
       }
-      else if(email === "user@gmail.com" && password === '12345'){
-        dispatch(setName(email));
-        navigate("/home");
+      else if(userData.role == "admin") {
+        try{
+          const response = await AdminService.loginAdmin({
+            email : userData.email,
+            password : userData.password,
+            role : userData.role
+          })
+          localStorage.setItem('token',response.data.token);
+          // navigate('/admin/prepaid');
+          if(response.data.role === "admin") {
+            navigate('/admin/prepaid');
+          }
+          else {
+            alert("Invalid Credentials");
+            navigate('/login');
+          }
+        }
+        catch (e) {
+          alert(e);
+        }
       }
       else{
         alert("Invalid Credentials");
+        navigate('/login');
       }
 
     }
     return (
+      <>
+      {loading ? (<LoginSkeleton />) : (
         <section className="h-screen">
       <div className="container px-6 py-24">
         <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
@@ -51,7 +120,7 @@ const Login = () => {
 
               <ul className="grid w-full gap-6 md:grid-cols-2 mb-5 ">
                   <li>
-                      <input type="radio" id="user" name="role" value="user" className="hidden peer" onClick={() => setRole("user")}/>
+                      <input type="radio" id="user" name="role" value="user" className="hidden peer" onClick={(e) => {setUserData({...userData, role: e.target.value,});}}/>
                       <label htmlFor="user" className="inline-flex items-center justify-between w-full px-4 py-2.5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
                           <div className="">
                               <div className="w-full text-lg font-semibold">User</div>
@@ -62,7 +131,7 @@ const Login = () => {
                       </label>
                   </li>
                   <li>
-                      <input type="radio" id="admin" name="role" value="admin" className="hidden peer" onClick={() => setRole("admin")}/>
+                      <input type="radio" id="admin" name="role" value="admin" className="hidden peer" onClick={(e) => {setUserData({...userData, role: e.target.value,});}}/>
                       <label htmlFor="admin" className="inline-flex items-center justify-between w-full px-4 py-2.5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
                           <div className="">
                               <div className="w-full text-lg font-semibold text-center">Admin</div>
@@ -77,11 +146,27 @@ const Login = () => {
 
             <div className="mb-5">
               <label htmlFor="email" className="block mb-2 text-sm font-medium text-steel-900 dark:text-white">Your email</label>
-              <input onChange={(e) => setEmail(e.target.value)} type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@gmail.com"  />
+              <input
+               value={userData.email} 
+              onChange={(e) => {
+                setUserData({
+                  ...userData,
+                  email : e.target.value,
+                })
+              }} 
+              type="email"
+               id="email" 
+               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@gmail.com"  />
             </div>
             <div className="mb-5">
               <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-              <input  onChange={(e) => setPassword(e.target.value)} type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  />
+              <input value={userData.password} 
+              onChange={(e) => {
+                setUserData({
+                  ...userData,
+                  password: e.target.value,
+                })
+              }}   type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  />
             </div>
             <div className="flex items-start mb-5">
               <div className="flex items-center h-5">
@@ -156,6 +241,8 @@ const Login = () => {
         </div>
       </div>
     </section>
+    )}
+    </>
     );
 }
 

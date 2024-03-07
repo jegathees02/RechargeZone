@@ -23,8 +23,8 @@ function Navbar({ links }) {
         <>
 
 
-<nav className="bg-white border-gray-200 dark:bg-gray-900 top-0">
-  <div className="max-w-screen-xl flex flex-wrap items-center justify-between  mx-auto p-4">
+<nav className=" bg-white border-gray-200 dark:bg-gray-900 top-0 shadow-inner shadow-churng ">
+  <div className="max-w-screen-xl flex flex-wrap items-center justify-between  mx-auto p-4 ">
   <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
     <Logo />
       {/* <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" /> */}
