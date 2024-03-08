@@ -57,6 +57,7 @@ const Login = () => {
           })
 
           localStorage.setItem('token',response.data.token);
+          localStorage.setItem('userData',JSON.stringify(response.data));
           if(response.data.role === "user") {
             navigate('/home');
           }

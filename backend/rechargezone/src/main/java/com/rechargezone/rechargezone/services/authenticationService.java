@@ -167,6 +167,7 @@ public class authenticationService {
         var userOptional = usermainrepo.findByEmail(request.getEmail());
         if (userOptional.isPresent()) {
             var user = userOptional.get();
+            var userDetail = userrepo.findById(user.getId());
             // if (request.getRole().equals("admin") ) {
             //     return AuthenticationResponse.builder()
             //                                 .token("Invalid Credentials")
@@ -182,6 +183,11 @@ public class authenticationService {
             return AuthenticationResponse.builder()
             .token(jwttoken)
             .role(userRole)
+            .fname(userDetail.getFname())
+            .lname(userDetail.getLname())
+            .email(user.getEmail())
+            .phone(userDetail.getPhone())
+            .serviceProvider(userDetail.getServiceProvider())
             .build();
 
         }
