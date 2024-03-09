@@ -10,12 +10,12 @@ import Sidebar from "../../../components/sidebar/sidebar";
 const LazyUserprofile = React.lazy(() => import ('../../../components/Profile/userprofile'));
 
 const UserprofilePage = () => {
-    const user = {
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'john@example.com',
-        // Add more user details here
-      };
+    // const user = {
+    //     firstName: 'John',
+    //     lastName: 'Doe',
+    //     email: 'john@example.com',
+    //     // Add more user details here
+    //   };
     return (
         <div className="flex flex-col">
             <Navbar links={userNavbarDatas} />
@@ -25,7 +25,7 @@ const UserprofilePage = () => {
                 </div>
                 <div>
                     <Suspense fallback={<div className = "dark:text-white  text-2xl">Loading</div>}>
-                        <LazyUserprofile user={user} />
+                        <LazyUserprofile user={localStorage.getItem('userData')} />
                     </Suspense>
                     {/* <Userprofile user={user} /> */}
                 </div>

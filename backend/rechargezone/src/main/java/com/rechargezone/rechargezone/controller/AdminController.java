@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rechargezone.rechargezone.dto.planDataDTO;
+import com.rechargezone.rechargezone.dto.userDto;
 import com.rechargezone.rechargezone.services.adminService;
+import com.rechargezone.rechargezone.services.authenticationService;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,6 +30,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class AdminController {
     @Autowired
     private adminService adminservice;
+
+    @Autowired
+    private authenticationService authenticationService;
 
 
     @PreAuthorize("hasAuthority('admin')")
@@ -59,6 +65,14 @@ public class AdminController {
     public String updatePlans(@PathVariable long id, @RequestBody planDataDTO entity) {
         return adminservice.updatePlans(id, entity);
     }
+
+    @PreAuthorize("hasAuthority('admin')")
+    @PutMapping("updateprofile") 
+    public String updateProfile(@RequestBody userDto dto) {
+        return authenticationService.updateAdmin(dto);
+    }
+    
+    
 
     @PreAuthorize("hasAuthority('admin')")
     @DeleteMapping("deleteplans/{id}")

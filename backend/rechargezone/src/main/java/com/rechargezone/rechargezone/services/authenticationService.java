@@ -141,7 +141,7 @@ public class authenticationService {
         }
         userMain savedUser = usermainrepo.save(user);
         adminDetails admin = new adminDetails();
-        admin.setAdmin_id(user.getId());
+        admin.setAdmin_id(savedUser.getId());
         admin.setAdmin_id(savedUser.getId());
         admin.setFname(request.getFname());
         admin.setLname(request.getLname());
@@ -167,28 +167,34 @@ public class authenticationService {
         var userOptional = usermainrepo.findByEmail(request.getEmail());
         if (userOptional.isPresent()) {
             var user = userOptional.get();
-            var userDetail = userrepo.findById(user.getId());
-            // if (request.getRole().equals("admin") ) {
-            //     return AuthenticationResponse.builder()
-            //                                 .token("Invalid Credentials")
-            //                                 .build();
-            // }
-            // if (request.getRole().equals("user")) {
-            //     return AuthenticationResponse.builder()
-            //                                 .token("Invalid Credentials")
-            //                                 .build();
-            // }
-            var jwttoken = jwtService.generateToken(user.getEmail());
-            var userRole = user.getRole().toString().toLowerCase();
-            return AuthenticationResponse.builder()
-            .token(jwttoken)
-            .role(userRole)
-            .fname(userDetail.getFname())
-            .lname(userDetail.getLname())
-            .email(user.getEmail())
-            .phone(userDetail.getPhone())
-            .serviceProvider(userDetail.getServiceProvider())
-            .build();
+            if(user.getRole().equals("user")) {
+                var userDetail = userrepo.findById(user.getId());
+                var jwttoken = jwtService.generateToken(user.getEmail());
+                var userRole = user.getRole().toString().toLowerCase();
+                return AuthenticationResponse.builder()
+                .token(jwttoken)
+                .role(userRole)
+                .fname(userDetail.getFname())
+                .lname(userDetail.getLname())
+                .email(user.getEmail())
+                .phone(userDetail.getPhone())
+                .serviceProvider(userDetail.getServiceProvider())
+                .build();
+            }
+            else{
+                var adminDetail = adminrepo.findById(user.getId()).get(0);
+                
+                var jwttoken = jwtService.generateToken(user.getEmail());
+                var userRole = user.getRole().toString().toLowerCase();
+                return AuthenticationResponse.builder()
+                .token(jwttoken)
+                .role(userRole)
+                .fname(adminDetail.getFname())
+                .lname(adminDetail.getLname())
+                .email(user.getEmail())
+                .phone(adminDetail.getPhone())
+                .build();
+            }
 
         }
         return AuthenticationResponse.builder()
@@ -344,7 +350,7 @@ public void updateUser(userDto dto) {
     }
 }
 
-public void updateAdmin(userDto dto) {
+public String updateAdmin(userDto dto) {
     List<adminDetails> admins = adminrepo.findById(dto.getId());
     if (admins != null) {
         for(adminDetails admin : admins) {
@@ -353,7 +359,9 @@ public void updateAdmin(userDto dto) {
             admin.setPhone(dto.getPhone());
             adminrepo.save(admin);
         }
+        return "updated";
     }
+    return "updated";
 }
 
 public String deleteUser(long id) {

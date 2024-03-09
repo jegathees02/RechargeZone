@@ -79,9 +79,11 @@ const Login = () => {
             password : userData.password,
             role : userData.role
           })
-          localStorage.setItem('token',response.data.token);
+          // localStorage.setItem('token',response.data.token);
           // navigate('/admin/prepaid');
           if(response.data.role === "admin") {
+            localStorage.setItem('token',response.data.token);
+            localStorage.setItem('userData',JSON.stringify(response.data));
             navigate('/admin/prepaid');
           }
           else {
