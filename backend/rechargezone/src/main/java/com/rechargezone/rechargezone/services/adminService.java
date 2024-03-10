@@ -2,18 +2,26 @@ package com.rechargezone.rechargezone.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rechargezone.rechargezone.dto.planDataDTO;
+import com.rechargezone.rechargezone.dto.Response.AdminResponse;
+import com.rechargezone.rechargezone.model.adminDetails;
 import com.rechargezone.rechargezone.model.planData;
+import com.rechargezone.rechargezone.model.userMain;
 import com.rechargezone.rechargezone.repository.adminDetailsRepository;
 import com.rechargezone.rechargezone.repository.planDetailsRepository;
 import com.rechargezone.rechargezone.repository.userDetailsRepository;
+import com.rechargezone.rechargezone.repository.userRepository;
 
 @Service
 public class adminService {
+
+    @Autowired
+    private userRepository usermainrepo;
 
     @Autowired
     private adminDetailsRepository adminrepo;
@@ -126,6 +134,24 @@ public class adminService {
         dtos.add(dto);
         }
         return dtos;
+    }
+
+    public List<AdminResponse> getadminDetails(long id) {
+        List<AdminResponse> admin = new ArrayList<>();
+        userMain admins = usermainrepo.findById(id);
+        AdminResponse adminResponse = new AdminResponse();
+        adminResponse.setId(admins.getId());
+        adminResponse.setEmail(admins.getEmail());
+        adminResponse.setPassword(admins.getPassword());
+        // adminResponse.setFirstName(admins.getFname());
+        List<adminDetails> admintable = adminrepo.findById(id);
+        adminDetails adminDetails = admintable.get(0);
+        adminResponse.setFname(adminDetails.getFname());
+        adminResponse.setLname(adminDetails.getLname());
+        adminResponse.setPhone(adminDetails.getPhone());
+        admin.add(adminResponse);
+
+        return admin;
     }
 
 

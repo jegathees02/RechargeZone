@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rechargezone.rechargezone.dto.planDataDTO;
 import com.rechargezone.rechargezone.dto.userDto;
+import com.rechargezone.rechargezone.dto.Response.AdminResponse;
 import com.rechargezone.rechargezone.services.adminService;
 import com.rechargezone.rechargezone.services.authenticationService;
 
@@ -52,6 +53,13 @@ public class AdminController {
     public List<planDataDTO> getByOperatorAndDataAndType(@PathVariable String operator, @PathVariable String data, @PathVariable String type) {
         return adminservice.getPlansByOperatorAndDataAndType(operator, data, type);
     }
+
+    @PreAuthorize("hasAuthority('admin')")
+    @GetMapping("/getAdminData")
+    public List<AdminResponse> getAdminData(@RequestBody long id) {
+        return adminservice.getadminDetails(id);
+
+    }
     
     
     @PreAuthorize("hasAuthority('admin')")
@@ -68,7 +76,7 @@ public class AdminController {
 
     @PreAuthorize("hasAuthority('admin')")
     @PutMapping("updateprofile") 
-    public String updateProfile(@RequestBody userDto dto) {
+    public String updateProfile(@RequestBody AdminResponse dto) {
         return authenticationService.updateAdmin(dto);
     }
     

@@ -11,5 +11,6 @@ public interface userDetailsRepository extends JpaRepository<userDetails, Long>{
     // public Optional<userMain> findByEmail(String email);
     
     public userDetails findById(long id);
+    // public userDetails findByEmail(String email);
     
 }

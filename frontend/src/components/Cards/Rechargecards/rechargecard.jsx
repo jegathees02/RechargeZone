@@ -192,7 +192,7 @@ const Rechargecard = ( { offerlists } ) => {
                                 <div>
                                     <h1 className="text-2xl font-bold text-[#01c293]">{offer.planAmount}</h1>
                                 </div>
-                                <div className="flex flex-col">
+                                <div className="flex flex-col text-black dark:text-white">
                                     <h1>Validity:</h1>
                                     <h1>{offer.planValidity}</h1>
                                 </div>
@@ -200,7 +200,7 @@ const Rechargecard = ( { offerlists } ) => {
                             <div className="py-1">
                                 <a href={''} className="text-blue-600">View Details</a>
                             </div>
-                            <div className="flex py-2 justify-between">
+                            <div className="flex py-2 justify-between text-black dark:text-white">
                                 <div>
                                     <h1>Validity: <br /> {offer.planValidity}</h1>
                                 </div>
@@ -208,7 +208,7 @@ const Rechargecard = ( { offerlists } ) => {
                                     <h1>Benefits :<br /> {offer.planSms}</h1>
                                 </div>
                             </div>
-                            <div className="py-2">
+                            <div className="py-2 text-black dark:text-white">
                                 <h1>Subscriptions:</h1>
                                 <h1>{offer.plansubscription}</h1>
                             </div>

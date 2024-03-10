@@ -10,15 +10,25 @@ class UserService {
         return axios.post(BASE_API_URL+"auth/register",userData);
     }
 
-    //get recharge plans
+    // //get recharge plans
     rechageplans(token, operator, data,types) {
+        console.log(operator);
         const config = {
             headers : {
-                Authorization : `Bearer ${token}`,
-            },
+            Authorization : `Bearer ${token}`,
+        },
         };
         return axios.get(BASE_API_URL+`user/getplansbyoperatoranddataandtype/${operator}/${data}/${types}`,config);
     }
+
+    // viewprepaidplans(token,operator,data,types) {
+    //     const config = {
+    //         headers : {
+    //             Authorization : `Bearer ${token}`,
+    //         },
+    //     };
+    //     return axios.get(BASE_API_URL+`user/getplansbyoperatoranddataandtype/${operator}/${data}/${types}`,config);
+    // }
     
 }
 

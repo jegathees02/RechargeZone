@@ -12,7 +12,7 @@ module.exports = {
     },
     colors: {
       'regal-blue': '#243c5a',
-      'churng': '#01c293',
+      'churn': '#01c293',
     },
   },
   plugins: [

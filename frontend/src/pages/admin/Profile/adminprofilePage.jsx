@@ -6,12 +6,12 @@ import Adminprofile from "../../../components/Profile/adminprofile";
 
 
 const AdminprofilePage = () => {
-    const user = {
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'john@example.com',
-        // Add more user details here
-      };
+    // const user = {
+    //     firstName: 'John',
+    //     lastName: 'Doe',
+    //     email: 'john@example.com',
+    //     // Add more user details here
+    //   };
     return (
         <div className="flex flex-col">
             <div>
@@ -22,7 +22,7 @@ const AdminprofilePage = () => {
                     <Sidebar links={adminSidebarLinks} />
                 </div>
                 <div className="flex-1">
-                    <Adminprofile  user={user}/>
+                    <Adminprofile  user={JSON.parse(localStorage.getItem('userData'))}/>
                 </div>
 
             </div>

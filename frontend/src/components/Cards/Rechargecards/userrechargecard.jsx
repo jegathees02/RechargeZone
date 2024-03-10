@@ -19,11 +19,11 @@ const Userrechargecard = ( { offerlists } ) => {
                         <div className="text-white border-2 rounded-xl p-2 w-60  mt-2 flex flex-col dark:bg-gray-900">
                             <div className="flex justify-between py-2">
                                 <div>
-                                    <h1 className="text-2xl font-bold text-[#01c293]">{offer.price}</h1>
+                                    <h1 className="text-2xl font-bold text-[#01c293]">₹ {offer.planAmount}</h1>
                                 </div>
                                 <div className="flex flex-col">
                                     <h1>Validity:</h1>
-                                    <h1>{offer.validity}</h1>
+                                    <h1>{offer.planValidity}</h1>
                                 </div>
                             </div>
                             <div className="py-1">
@@ -31,15 +31,15 @@ const Userrechargecard = ( { offerlists } ) => {
                             </div>
                             <div className="flex py-2 justify-between">
                                 <div>
-                                    <h1>Validity: <br /> {offer.validity}</h1>
+                                    <h1>Validity: <br /> {offer.planValidity}</h1>
                                 </div>
                                 <div>
-                                    <h1>Benefits :<br /> {offer.benefits}</h1>
+                                    <h1>SMS<br /> {offer.planSms}/Day</h1>
                                 </div>
                             </div>
                             <div className="py-2">
                                 <h1>Subscriptions:</h1>
-                                <h1>{offer.subscription}</h1>
+                                <h1>{offer.plansubscription}</h1>
                             </div>
                             <div className="py-4 w-full justify-center items-center mx-auto">
                                 <Link to={`/user/recharge/${offer.id-1}`} className="border px-[25%] py-1 bg-blue-600 hover:bg-blue-700 rounded-2xl">

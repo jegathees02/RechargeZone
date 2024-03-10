@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.rechargezone.rechargezone.dto.userDto;
+import com.rechargezone.rechargezone.dto.Response.AdminResponse;
 import com.rechargezone.rechargezone.dto.Response.AuthenticationResponse;
 import com.rechargezone.rechargezone.model.Role;
 // import com.rechargezone.rechargezone.mapper.UserMapper;
@@ -174,11 +175,13 @@ public class authenticationService {
                 return AuthenticationResponse.builder()
                 .token(jwttoken)
                 .role(userRole)
+                .id(user.getId())
                 .fname(userDetail.getFname())
                 .lname(userDetail.getLname())
                 .email(user.getEmail())
                 .phone(userDetail.getPhone())
                 .serviceProvider(userDetail.getServiceProvider())
+                .city(userDetail.getCity())
                 .build();
             }
             else{
@@ -189,6 +192,7 @@ public class authenticationService {
                 return AuthenticationResponse.builder()
                 .token(jwttoken)
                 .role(userRole)
+                .id(user.getId())
                 .fname(adminDetail.getFname())
                 .lname(adminDetail.getLname())
                 .email(user.getEmail())
@@ -305,7 +309,7 @@ public class authenticationService {
         return userrepo.findById(id);
     }
 
-    public Optional<userMain> getUserById(long id) {
+    public userMain getUserById(long id) {
         return usermainrepo.findById(id);
     }
 
@@ -314,7 +318,7 @@ public class authenticationService {
     }
 
 public void updateUser(userDto dto) {
-    userMain userMain = usermainrepo.findById(dto.getId()).orElse(null);
+    userMain userMain = usermainrepo.findById(dto.getId());
     if (userMain != null) {
         userMain.setEmail(dto.getEmail());
         userMain.setPassword(dto.getPassword());
@@ -350,10 +354,18 @@ public void updateUser(userDto dto) {
     }
 }
 
-public String updateAdmin(userDto dto) {
+public String updateAdmin(AdminResponse dto) {
     List<adminDetails> admins = adminrepo.findById(dto.getId());
+    // userMain usermaindatabase = usermainrepo.findById(dto.getId());
+    userMain usermain = new userMain();
+    usermain.setId(dto.getId());
+    usermain.setEmail(dto.getEmail());
+    usermain.setPassword(dto.getPassword());
+    // usermain.setRole(dto.getRole());
+    usermainrepo.save(usermain);
     if (admins != null) {
         for(adminDetails admin : admins) {
+            admin.setAdmin_id(dto.getId());
             admin.setFname(dto.getFname());
             admin.setLname(dto.getLname());
             admin.setPhone(dto.getPhone());

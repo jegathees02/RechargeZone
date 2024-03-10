@@ -104,7 +104,7 @@ const Login = () => {
     return (
       <>
       {loading ? (<LoginSkeleton />) : (
-        <section className="h-screen">
+        <section className="h-full bg-white dark:bg-gray-900">
       <div className="container px-6 py-24">
         <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
           {/* <!-- Left column container with background--> */}
@@ -124,7 +124,7 @@ const Login = () => {
               <ul className="grid w-full gap-6 md:grid-cols-2 mb-5 ">
                   <li>
                       <input type="radio" id="user" name="role" value="user" className="hidden peer" onClick={(e) => {setUserData({...userData, role: e.target.value,});}}/>
-                      <label htmlFor="user" className="inline-flex items-center justify-between w-full px-4 py-2.5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                      <label htmlFor="user" className="inline-flex items-center justify-between w-full px-4 py-2.5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-green-500 peer-checked:border-green-600 peer-checked:text-green-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
                           <div className="">
                               <div className="w-full text-lg font-semibold">User</div>
                           </div>
@@ -135,7 +135,7 @@ const Login = () => {
                   </li>
                   <li>
                       <input type="radio" id="admin" name="role" value="admin" className="hidden peer" onClick={(e) => {setUserData({...userData, role: e.target.value,});}}/>
-                      <label htmlFor="admin" className="inline-flex items-center justify-between w-full px-4 py-2.5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+                      <label htmlFor="admin" className="inline-flex items-center justify-between w-full px-4 py-2.5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-green-500 peer-checked:border-green-600 peer-checked:text-green-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
                           <div className="">
                               <div className="w-full text-lg font-semibold text-center">Admin</div>
                           </div>
@@ -159,7 +159,7 @@ const Login = () => {
               }} 
               type="email"
                id="email" 
-               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@gmail.com"  />
+               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500" placeholder="name@gmail.com"  />
             </div>
             <div className="mb-5">
               <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
@@ -169,18 +169,18 @@ const Login = () => {
                   ...userData,
                   password: e.target.value,
                 })
-              }}   type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  />
+              }}   type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"  />
             </div>
             <div className="flex items-start mb-5">
               <div className="flex items-center h-5">
-                <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"  />
+                <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-green-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-green-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"  />
               </div>
               <label htmlFor="remember" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
             </div>
             <div>
               <p className="dark:text-white">No Account&nbsp; ? &nbsp;<Link className="text-red-700 hover:underline" to="/signup">SignUp </Link></p>
             </div>
-            <button onClick={(e) => handleLogin(e)} type="submit" className="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-7 py-2 mt-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
+            <button onClick={(e) => handleLogin(e)} type="submit" className="text-white bg-churn hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-7 py-2 mt-2 text-center dark:bg-churn dark:hover:bg-green-700 dark:focus:ring-green-800">Login</button>
 
               {/* <!-- Divider --> */}
               <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
@@ -215,7 +215,7 @@ const Login = () => {
                         </g>
                     </g>
                 </svg>
-                <span className="dark:text-white">Continue with Google</span>
+                <span className="dark:text-black">Continue with Google</span>
             </button>
 
             <button 
@@ -235,7 +235,7 @@ const Login = () => {
                     </g>
                 </svg>
 
-                <span className="dark:text-white">Continue with Apple</span>
+                <span className="dark:text-black">Continue with Apple</span>
             </button>
               </div>
               
