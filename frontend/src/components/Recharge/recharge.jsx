@@ -89,11 +89,11 @@ import UserService from '../../Services/UserService';
       const fetchPlans = async() => {
         try{
 
-          const response = await UserService.rechageplans(localStorage.getItem('token'), "jio","1", "prepaid");
+          const response = await UserService.rechageplans(localStorage.getItem('token'), JSON.parse(localStorage.getItem('userData')).serviceProvider,"1", JSON.parse(localStorage.getItem('userData')).city);
           setGb1(response.data);
-          const response1_5 = await UserService.rechageplans(localStorage.getItem('token'),"jio",'1.5','prepaid');
+          const response1_5 = await UserService.rechageplans(localStorage.getItem('token'),JSON.parse(localStorage.getItem('userData')).serviceProvider,'1.5',JSON.parse(localStorage.getItem('userData')).city);
           setGb1_5(response1_5.data);
-          const response2 = await UserService.rechageplans(localStorage.getItem('token'),"jio","2","prepaid");
+          const response2 = await UserService.rechageplans(localStorage.getItem('token'),JSON.parse(localStorage.getItem('userData')).serviceProvider,"2",JSON.parse(localStorage.getItem('userData')).city);
           setGb2(response2.data);
         }
         catch(e) {

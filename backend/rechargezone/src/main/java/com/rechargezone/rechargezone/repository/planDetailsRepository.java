@@ -11,5 +11,7 @@ public interface planDetailsRepository extends JpaRepository<planData, Long>{
     public List<planData> findByOperatorAndPlanDataAndPlanType(String operator, String planData, String planType); 
     // public List<planData> findByOperatorandPlanData(String operator, String planData);
     public planData findByPlanType(String planType);
-    
+    public List<planData> findById(long id);
+    public List<planData> findByOperatorAndPlanValidityAndPlanType(String operator, String planValidity, String PlanType);
+    // public List<planData> findByOperatorAndPlanValidityAndPlanType(String operator, String planValidity, String PlanType);
 }

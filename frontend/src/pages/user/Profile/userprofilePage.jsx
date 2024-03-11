@@ -25,7 +25,7 @@ const UserprofilePage = () => {
                 </div>
                 <div>
                     <Suspense fallback={<div className = "dark:text-white  text-2xl">Loading</div>}>
-                        <LazyUserprofile user={localStorage.getItem('userData')} />
+                        <LazyUserprofile user={JSON.parse(localStorage.getItem('userData'))} />
                     </Suspense>
                     {/* <Userprofile user={user} /> */}
                 </div>

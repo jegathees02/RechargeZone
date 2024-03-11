@@ -42,7 +42,7 @@ const Userrechargecard = ( { offerlists } ) => {
                                 <h1>{offer.plansubscription}</h1>
                             </div>
                             <div className="py-4 w-full justify-center items-center mx-auto">
-                                <Link to={`/user/recharge/${offer.id-1}`} className="border px-[25%] py-1 bg-blue-600 hover:bg-blue-700 rounded-2xl">
+                                <Link to={`/user/recharge/${offer.id}`} className="border px-[25%] py-1 bg-blue-600 hover:bg-blue-700 rounded-2xl">
                                     Recharge
                                 </Link>
                             </div>

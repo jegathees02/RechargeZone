@@ -21,6 +21,54 @@ class UserService {
         return axios.get(BASE_API_URL+`user/getplansbyoperatoranddataandtype/${operator}/${data}/${types}`,config);
     }
 
+    rechageplansPostpaid(token,operator,validity,types) {
+        const config = {
+            headers : {
+            Authorization : `Bearer ${token}`,
+        },
+        };
+        return axios.get(BASE_API_URL+`user/getplansbyoperatorandvalidityandtype/${operator}/${validity}/${types}`,config);
+    }
+
+    getrechageplanbyId(token, id) {
+        const config = {
+            headers : {
+            Authorization : `Bearer ${token}`,
+        },
+        };
+        return axios.get(BASE_API_URL+`user/getRechargePlanByUserId/${id}`,config);
+    }
+
+    updateprofile(token,userData) {
+        const config = {
+            headers : {
+            Authorization : `Bearer ${token}`,
+        },
+        };
+        return axios.put(BASE_API_URL+`user/update-profile`,userData,config);
+    }
+
+    addRechargePayment(token, userid, planid) {
+        // const convertedPlanId = parseInt(planid);
+        console.log(token);
+        console.log(userid);
+        const config = {
+            headers : {
+            Authorization : `Bearer ${token}`,
+        },
+        };
+        return axios.post(BASE_API_URL+`user/recharge/${userid}/${planid}`,config);
+    }
+
+    getHistoryData(token,userid) {
+        const config = {
+            headers : {
+            Authorization : `Bearer ${token}`,
+        },
+        };
+        return axios.get(BASE_API_URL+`user/getRechargeById/${userid}`,config);
+    }
+
     // viewprepaidplans(token,operator,data,types) {
     //     const config = {
     //         headers : {

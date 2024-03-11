@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.rechargezone.rechargezone.dto.userDto;
 import com.rechargezone.rechargezone.dto.Response.AdminResponse;
 import com.rechargezone.rechargezone.dto.Response.AuthenticationResponse;
+import com.rechargezone.rechargezone.dto.Response.UserDataResponse;
 import com.rechargezone.rechargezone.model.Role;
 // import com.rechargezone.rechargezone.mapper.UserMapper;
 import com.rechargezone.rechargezone.model.adminDetails;
@@ -317,11 +318,11 @@ public class authenticationService {
         return usermainrepo.findByEmail(email);
     }
 
-public void updateUser(userDto dto) {
+public void updateUser(UserDataResponse dto) {
     userMain userMain = usermainrepo.findById(dto.getId());
     if (userMain != null) {
         userMain.setEmail(dto.getEmail());
-        userMain.setPassword(dto.getPassword());
+        // userMain.setPassword(dto.getPassword());
         userMain.setRole(dto.getRole());
         usermainrepo.save(userMain);
 
@@ -345,7 +346,7 @@ public void updateUser(userDto dto) {
                     user.setLname(dto.getLname());
                     user.setPhone(dto.getPhone());
                     user.setServiceProvider(dto.getServiceProvider());
-                    user.setAddress(dto.getAddress());
+                    // user.setAddress(dto.getAddress());
                     user.setCity(dto.getCity());
                     userrepo.save(user);
                 // }

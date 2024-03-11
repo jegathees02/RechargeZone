@@ -24,6 +24,15 @@ class AdminService {
         return axios.post(BASE_API_URL+`admin/addplans`,planData,config);
     }
 
+    rechageplansPostpaid(token,operator,validity,types) {
+        const config = {
+            headers : {
+            Authorization : `Bearer ${token}`,
+        },
+        };
+        return axios.get(BASE_API_URL+`user/getplansbyoperatorandvalidityandtype/${operator}/${validity}/${types}`,config);
+    }
+
     updateRechargePlans(token, id, planData) {
         const config = {
             headers : {

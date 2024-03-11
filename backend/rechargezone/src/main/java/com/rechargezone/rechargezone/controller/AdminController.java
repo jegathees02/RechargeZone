@@ -55,6 +55,13 @@ public class AdminController {
     }
 
     @PreAuthorize("hasAuthority('admin')")
+    @GetMapping("/getplansbyoperatorandvalidityandtype/{operator}/{validity}/{type}")
+    public List<planDataDTO> getByOperatorAndValidityAndType(@PathVariable String operator, @PathVariable String validity, @PathVariable String type) {
+        // return userservice.getPlansByOperatorAndDataAndType(operator, validity, type);
+        return adminservice.getPlansByOperatorAndValidityAndType(operator, validity, type);
+    }
+
+    @PreAuthorize("hasAuthority('admin')")
     @GetMapping("/getAdminData")
     public List<AdminResponse> getAdminData(@RequestBody long id) {
         return adminservice.getadminDetails(id);

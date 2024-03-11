@@ -49,7 +49,7 @@ const Adminpostpaid = () => {
   const handleAddModalSubmit = async() => {
     const planData = {
         'operator' : serviceProvider,
-        'planType' : "prepaid",
+        'planType' : "postpaid",
         'planName' : addOffer.name,
         'planValidity' : addOffer.validity,
         'planAmount' : addOffer.price,
@@ -82,13 +82,13 @@ const Adminpostpaid = () => {
   const handlejio = async() => {
     setServiceProvider('jio');
     try{
-      const response1 = await AdminService.rechageplans(localStorage.getItem('token'), "jio","1", "prepaid");
+      const response1 = await AdminService.rechageplansPostpaid(localStorage.getItem('token'), "jio","28", "postpaid");
       setGb1(response1.data);
 
-      const response1_5 = await AdminService.rechageplans(localStorage.getItem('token'), "jio","1.5", "prepaid");
+      const response1_5 = await AdminService.rechageplansPostpaid(localStorage.getItem('token'), "jio","56", "postpaid");
       setGb1_5(response1_5.data);
 
-      const response2 = await AdminService.rechageplans(localStorage.getItem('token'), "jio","2", "prepaid");
+      const response2 = await AdminService.rechageplansPostpaid(localStorage.getItem('token'), "jio","84", "postpaid");
       setGb2(response2.data);
       console.log(response1.data);
     }
@@ -99,13 +99,13 @@ const Adminpostpaid = () => {
   const handleairtel = async() => {
     setServiceProvider('airtel');
     try{
-      const response1 = await AdminService.rechageplans(localStorage.getItem('token'), "airtel","1", "prepaid");
+      const response1 = await AdminService.rechageplansPostpaid(localStorage.getItem('token'), "airtel","28", "postpaid");
       setGb1(response1.data);
 
-      const response1_5 = await AdminService.rechageplans(localStorage.getItem('token'), "airtel","1.5", "prepaid");
+      const response1_5 = await AdminService.rechageplansPostpaid(localStorage.getItem('token'), "airtel","56", "postpaid");
       setGb1_5(response1_5.data);
 
-      const response2 = await AdminService.rechageplans(localStorage.getItem('token'), "airtel","2", "prepaid");
+      const response2 = await AdminService.rechageplansPostpaid(localStorage.getItem('token'), "airtel","84", "postpaid");
       setGb2(response2.data);
       console.log(response1.data);
     }
@@ -116,13 +116,13 @@ const Adminpostpaid = () => {
   const handlevi = async() => {
     setServiceProvider('vi');
     try{
-      const response1 = await AdminService.rechageplans(localStorage.getItem('token'), "vi","1", "prepaid");
+      const response1 = await AdminService.rechageplansPostpaid(localStorage.getItem('token'), "vi","28", "postpaid");
       setGb1(response1.data);
 
-      const response1_5 = await AdminService.rechageplans(localStorage.getItem('token'), "vi","1.5", "prepaid");
+      const response1_5 = await AdminService.rechageplansPostpaid(localStorage.getItem('token'), "vi","56", "postpaid");
       setGb1_5(response1_5.data);
 
-      const response2 = await AdminService.rechageplans(localStorage.getItem('token'), "vi","2", "prepaid");
+      const response2 = await AdminService.rechageplansPostpaid(localStorage.getItem('token'), "vi","84", "postpaid");
       setGb2(response2.data);
       console.log(response1.data);
     }
@@ -134,13 +134,13 @@ const Adminpostpaid = () => {
   useEffect(() => {
     const fetchPlans = async() => {
       try{
-        const response1 = await AdminService.rechageplans(localStorage.getItem('token'), "jio","1", "prepaid");
+        const response1 = await AdminService.rechageplansPostpaid(localStorage.getItem('token'), "jio","28", "postpaid");
         setGb1(response1.data);
 
-        const response1_5 = await AdminService.rechageplans(localStorage.getItem('token'), "jio","1.5", "prepaid");
+        const response1_5 = await AdminService.rechageplansPostpaid(localStorage.getItem('token'), "jio","56", "postpaid");
         setGb1_5(response1_5.data);
 
-        const response2 = await AdminService.rechageplans(localStorage.getItem('token'), "jio","2", "prepaid");
+        const response2 = await AdminService.rechageplansPostpaid(localStorage.getItem('token'), "jio","84", "postpaid");
         setGb2(response2.data);
         console.log(response1.data);
       }
@@ -164,7 +164,7 @@ const Adminpostpaid = () => {
       </div>
       <div>
       <div className="py-2 flex  gap-5">
-          <h1 className="text-2xl font-semibold dark:text-white">1 GB/Day plans</h1>
+          <h1 className="text-2xl font-semibold dark:text-white">28 Days plans</h1>
           <h1 onClick={ () => {
             handleAddOffer();
             setData('1');
@@ -177,7 +177,7 @@ const Adminpostpaid = () => {
       </div>
       <div  className="py-2">
         <div className="py-2 flex  gap-5">
-          <h1 className="text-2xl font-semibold dark:text-white">1.5 GB/Day plans</h1>
+          <h1 className="text-2xl font-semibold dark:text-white">56 Days plans</h1>
           <h1 onClick={ () => {
             handleAddOffer();
             setData('1.5');
@@ -189,7 +189,7 @@ const Adminpostpaid = () => {
       </div>
       <div className="py-2">
       <div className="py-2 flex  gap-5">
-          <h1 className="text-2xl font-semibold dark:text-white">2 GB/Day plans</h1>
+          <h1 className="text-2xl font-semibold dark:text-white">84 Days plans</h1>
           <h1 onClick={ () => {
             handleAddOffer();
             setData('2');

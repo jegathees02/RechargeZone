@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.rechargezone.rechargezone.dto.planDataDTO; // Import the planDataDTO class
 import com.rechargezone.rechargezone.dto.userDto;
+import com.rechargezone.rechargezone.dto.Response.HistoryResponse;
+import com.rechargezone.rechargezone.dto.Response.UserDataResponse;
 import com.rechargezone.rechargezone.model.adminDetails;
+import com.rechargezone.rechargezone.model.planData;
 import com.rechargezone.rechargezone.model.userHistory;
 
 import java.util.List; // Import the List class
@@ -57,14 +60,28 @@ public class UserController {
     }
 
     @PreAuthorize("hasAuthority('user')")
+    @GetMapping("/getplansbyoperatorandvalidityandtype/{operator}/{validity}/{type}")
+    public List<planDataDTO> getByOperatorAndValidityAndType(@PathVariable String operator, @PathVariable String validity, @PathVariable String type) {
+        // return userservice.getPlansByOperatorAndDataAndType(operator, validity, type);
+        return userservice.getPlansByOperatorAndValidityAndType(operator, validity, type);
+    }
+
+    @PreAuthorize("hasAuthority('user')")
     @GetMapping("/getRechargeById/{id}") 
-    public List<userHistory> getRechargeById(@PathVariable long id) {
+    public List<HistoryResponse> getRechargeById(@PathVariable long id) {
         return userservice.getHistoryByUserId(id);  
     }
 
     @PreAuthorize("hasAuthority('user')")
-    @PostMapping("/recharge")
-    public String recharge(@RequestParam long userId, @RequestParam long planId) {
+    @GetMapping("/getRechargePlanByUserId/{id}")
+    public List<planData> getRechargeByUserId(@PathVariable long id) {
+        System.out.println(userservice.getPlanById(id));
+        return userservice.getPlanById(id);
+    }
+
+    // @PreAuthorize("hasAuthority('user')")
+    @PostMapping("/recharge/{userId}/{planId}")
+    public String recharge(@PathVariable long userId, @PathVariable long planId) {
         // return userservice.recharge(entity);
         userservice.addHistoryData(userId, planId);
         return "added";
@@ -72,7 +89,7 @@ public class UserController {
 
     @PreAuthorize("hasAuthority('user')")
     @PutMapping("/update-profile")
-    public void updateProfile(@RequestBody userDto entity) {
+    public void updateProfile(@RequestBody UserDataResponse entity) {
         authservice.updateUser(entity);
     }
 

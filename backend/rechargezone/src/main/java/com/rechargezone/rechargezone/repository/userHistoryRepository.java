@@ -11,5 +11,6 @@ public interface userHistoryRepository extends JpaRepository<userHistory,Long> {
 
     // List<userHistory> findByUserDetailsId(Long userId);
     List<userHistory> findByUserDetails(userDetails userDetails);
+    // List<userHistory> findBy
     
 }

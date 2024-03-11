@@ -14,7 +14,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDate;
-import java.time.LocalTime;
+// import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,7 +33,7 @@ public class userHistory {
     // private long user_id;
     // private String plan_id;
     private LocalDate date;
-    private LocalTime time;
+    private LocalDateTime time;
     private String rechargedBy;
 
     @ManyToOne

@@ -1,8 +1,31 @@
 // import React from 'react';
-import { historyData } from "./userrechargehistorylist";
+import { useEffect, useState } from "react";
+// import { historyData } from "./userrechargehistorylist";
+import UserService from "../../Services/UserService";
 
 const Userrechargehistory = () => {
+    const [history,setHistory] = useState(null);
+    const [loading , setLoading] = useState(false);
+    useEffect(() => {
+        const getHistory = async() => {
+            try{
+                const response = await UserService.getHistoryData(localStorage.getItem('token'), JSON.parse(localStorage.getItem('userData')).id);
+                setHistory((response.data));
+                console.log(history);
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }
+        getHistory();
+        setTimeout(() => {
+            setLoading(true);
+            // Code to be executed after 3 seconds
+        }, 100);
+    },[]); // Include 'history' in the dependency array
     return (
+        <>
+        {loading && 
         <div>
 
 
@@ -31,16 +54,16 @@ const Userrechargehistory = () => {
             </tr>
         </thead>
         <tbody>
-            {historyData.map((history,index) => {
+            {history.map((history,index) => {
                 return(
                 <tr key={index}  className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th  scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {history.date}
                     </th>
                     <td className="px-6 py-4">{history.time}</td>
-                    <td className="px-6 py-4">{history.amount}</td>
-                    <td className="px-6 py-4">{history.plan}</td>
-                    <td className="px-6 py-4">{history.rechargeBy}</td>
+                    <td className="px-6 py-4">{history.planAmount}</td>
+                    <td className="px-6 py-4">{history.planName}</td>
+                    <td className="px-6 py-4">{history.rechargedBy}</td>
                     <td className="px-6 py-4">{history.viewBill}</td>
 
                 </tr>
@@ -52,6 +75,8 @@ const Userrechargehistory = () => {
 
             
         </div>
+        }
+        </>
     );
 }
 
