@@ -69,6 +69,15 @@ class UserService {
         return axios.get(BASE_API_URL+`user/getRechargeById/${userid}`,config);
     }
 
+    getLatestRecharge(token,userid) {
+        const config = {
+            headers : {
+            Authorization : `Bearer ${token}`,
+        },
+        };
+        return axios.get(BASE_API_URL+`user/getLatestRechargeByUserId/${userid}`,config);
+    }
+
     // viewprepaidplans(token,operator,data,types) {
     //     const config = {
     //         headers : {

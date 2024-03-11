@@ -204,6 +204,31 @@ public class userService {
         return planrepo.findById(id);
     }
 
+public planDataDTO getLatestRechargePlanByUserId(long userId) {
+    userDetails user = userrepo.findById(userId);
+    List<userHistory> history = historyrepo.findByUserDetails(user);
+    
+    if (history.isEmpty()) {
+        return null; // No recharge history found for the user
+    }
+    
+    userHistory latestRecharge = history.get(history.size() - 1);
+    planData plan = latestRecharge.getPlanData();
+    
+    planDataDTO planDetails = new planDataDTO();
+    planDetails.setPlanName(plan.getPlanName());
+    planDetails.setPlanAmount(plan.getPlanAmount());
+    planDetails.setPlanValidity(plan.getPlanValidity());
+    planDetails.setPlanType(plan.getPlanType());
+    planDetails.setOperator(plan.getOperator());
+    planDetails.setPlanData(plan.getPlanData());
+    planDetails.setPlanTalktime(plan.getPlanTalktime());
+    planDetails.setPlanSms(plan.getPlanSms());
+    // Set other plan details as needed
+    
+    return planDetails;
+}
+
 
     
     

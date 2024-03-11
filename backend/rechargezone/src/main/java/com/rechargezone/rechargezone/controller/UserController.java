@@ -79,6 +79,13 @@ public class UserController {
         return userservice.getPlanById(id);
     }
 
+    @PreAuthorize("hasAuthority('user')")
+    @GetMapping("/getLatestRechargeByUserId/{id}")
+    public planDataDTO getLatestRechargeByUserId(@PathVariable long id) {
+        // System.out.println(userservice.getPlanById(id));
+        return userservice.getLatestRechargePlanByUserId(id);
+    }
+
     // @PreAuthorize("hasAuthority('user')")
     @PostMapping("/recharge/{userId}/{planId}")
     public String recharge(@PathVariable long userId, @PathVariable long planId) {

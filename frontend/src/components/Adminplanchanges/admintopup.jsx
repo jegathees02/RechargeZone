@@ -28,6 +28,7 @@ const Admintopup = () => {
     setShowAddModal(false);
   };
   const handleAddModalSubmit = async() => {
+    // console.log(serviceProvider);
     const planData = {
         'operator' : serviceProvider,
         'planType' : "topup",
@@ -37,7 +38,7 @@ const Admintopup = () => {
         'planDescription' : addOffer.description,
         'planTalktime' : addOffer.talktime,
         'planSms' : addOffer.sms,
-        'planData' : addOffer.data,
+        'planData' : data,
         'plansubscription' : addOffer.subscription
     }
     try{
@@ -211,10 +212,10 @@ const Admintopup = () => {
                           </div>
                           <div>
                               <input type="text" name="data" placeholder="Plan Data"  value={data}  disabled
-                              // onChange={(e) => setAddOffer({
-                              //     ...addOffer,
-                              //     data : e.target.value,
-                              //  })} 
+                              onChange={(e) => setAddOffer({
+                                  ...addOffer,
+                                  data : e.target.value,
+                               })} 
                                />
                           </div>
                           <div>

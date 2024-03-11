@@ -30,7 +30,7 @@ class AdminService {
             Authorization : `Bearer ${token}`,
         },
         };
-        return axios.get(BASE_API_URL+`user/getplansbyoperatorandvalidityandtype/${operator}/${validity}/${types}`,config);
+        return axios.get(BASE_API_URL+`admin/getplansbyoperatorandvalidityandtype/${operator}/${validity}/${types}`,config);
     }
 
     updateRechargePlans(token, id, planData) {

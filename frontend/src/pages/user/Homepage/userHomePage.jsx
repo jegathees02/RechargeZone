@@ -1,7 +1,7 @@
 // import Navbar from "../../../components/Navbar/navbar";
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import {  useSelector } from 'react-redux';
-import { setName } from '../../../redux/userRoleSlice';
+// import { setName } from '../../../redux/userRoleSlice';
 // import Sidebar from "../../../components/sidebar/sidebar";
 import Footer from "../../../components/Footer/footer";
 // import Slider from 'react-slick';
@@ -13,6 +13,8 @@ import userNavbarDatas from '../../../components/Navbar/navbarData';
 import { userSidebarLinks } from "../../../components/sidebar/sidebardata";
 
 import OfferImg from '../../../assets/images/signup.gif';
+import UserService from '../../../Services/UserService';
+// import axios from 'axios';
 
 
 const LazyNavbar = React.lazy(() => import("../../../components/Navbar/navbar"));
@@ -21,6 +23,18 @@ const LazySidebar = React.lazy(() => import("../../../components/sidebar/sidebar
 
 const UserHomePage = () => {
   const name = useSelector((state) => state.userRole.name);
+  const [planData, setPlanData] = useState([]);
+
+  useEffect(() => {
+    const getPlan = async () => {
+      const response = await UserService.getLatestRecharge(localStorage.getItem('token'), JSON.parse(localStorage.getItem('userData')).id);
+      setPlanData(response.data);
+      console.log(response.data);
+      console.log(planData);
+
+    }
+    getPlan();
+  },[]);
 
   // var settings = {
   //   dots: true,
@@ -52,16 +66,16 @@ const UserHomePage = () => {
           </div>
           <div className="w-full h-10 top-[-13%] relative flex justify-evenly">
           <div className="border rounded-md h-10 w-48 my-auto relative top-3 bg-white ">
-            <h1 className="text-green-600 font-medium my-2">Your Pack: Jio Unlimited</h1>
+            <h1 className="text-green-600 font-medium my-2">Your Pack: {planData.planName}</h1>
           </div>
           <div className="border rounded-md h-10 w-48 my-auto relative top-3 bg-white">
-            <h1 className="text-green-600 font-medium my-2">Data : 1 GB/Day</h1>
+            <h1 className="text-green-600 font-medium my-2">Data : {planData.planData} GB/Day</h1>
           </div>
           <div className="border rounded-md h-10 w-48 my-auto relative top-3 bg-white">
-            <h1 className="text-green-600 font-medium my-2">SMS : 100 SMS/Day</h1>
+            <h1 className="text-green-600 font-medium my-2">SMS : {planData.planSms}</h1>
           </div>
           <div className="border rounded-md h-10 w-48 my-auto relative top-3 bg-white">
-            <h1 className="text-green-600 font-medium my-2">Next recharge : 10 Days</h1>
+            <h1 className="text-green-600 font-medium my-2">Next recharge : {planData.planValidity} Days</h1>
           </div>
           </div>
           {/* <div className="  p-4 ">
@@ -81,7 +95,7 @@ const UserHomePage = () => {
         {/* </div> */}
         </div>
         <div className="p-4 font-serif">
-          <h1 className="text-5xl font-serif font-semibold">Offers</h1>
+          <h1 className="text-4xl font-sans font-semibold">Offers</h1>
           {/* <Slider {...settings}> */}
           <div className="flex gap-5">
             <div className="border-2 rounded-md p-2 w-48 mt-9 flex flex-col">

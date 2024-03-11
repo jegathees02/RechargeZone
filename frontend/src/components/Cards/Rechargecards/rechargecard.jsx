@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
+import {  faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 import AdminService from '../../../Services/AdminService';
 
 // const initialOfferList = [
@@ -61,10 +61,10 @@ const Rechargecard = ( { offerlists } ) => {
         adddata();
     },);
 
-    const handleAddOffer = () => {
-        console.log(offerList);
-        setShowAddModal(true);
-    };
+    // const handleAddOffer = () => {
+    //     console.log(offerList);
+    //     setShowAddModal(true);
+    // };
 
     const handleDeleteOffer = async(id) => {
         try{
@@ -183,7 +183,7 @@ const Rechargecard = ( { offerlists } ) => {
                 {offerList.map((offer) => (
                     <div key={offer.id} className="inline-block relative">
                         <div className="absolute top-[-2%] bg-gray-600 right-0 flex gap-2 mt-2 mr-2">
-                            <FontAwesomeIcon icon={faPlus} onClick={handleAddOffer} className="text-green-500  cursor-pointer"  />
+                            {/* <FontAwesomeIcon icon={faPlus} onClick={handleAddOffer} className="text-green-500  cursor-pointer"  /> */}
                             <FontAwesomeIcon icon={faTrash} onClick={() => handleDeleteOffer(offer.id)} className="text-red-500 cursor-pointer"  />
                             <FontAwesomeIcon icon={faEdit} onClick={() => handleUpdateOffer(offer)} className="text-blue-500 cursor-pointer" />
                         </div>
@@ -193,8 +193,8 @@ const Rechargecard = ( { offerlists } ) => {
                                     <h1 className="text-2xl font-bold text-[#01c293]">{offer.planAmount}</h1>
                                 </div>
                                 <div className="flex flex-col text-black dark:text-white">
-                                    <h1>Validity:</h1>
-                                    <h1>{offer.planValidity}</h1>
+                                    <h1>Data:</h1>
+                                    <h1>{offer.planData} GB</h1>
                                 </div>
                             </div>
                             <div className="py-1">
@@ -202,10 +202,10 @@ const Rechargecard = ( { offerlists } ) => {
                             </div>
                             <div className="flex py-2 justify-between text-black dark:text-white">
                                 <div>
-                                    <h1>Validity: <br /> {offer.planValidity}</h1>
+                                    <h1>Validity: <br /> {offer.planValidity} Days</h1>
                                 </div>
                                 <div>
-                                    <h1>Benefits :<br /> {offer.planSms}</h1>
+                                    <h1>SMS :<br /> {offer.planSms} / Day</h1>
                                 </div>
                             </div>
                             <div className="py-2 text-black dark:text-white">

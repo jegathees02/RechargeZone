@@ -54,10 +54,36 @@ const ViewRecharge = () => {
   const handleRecharge = async () => {
     try{
       const response = await UserService.addRechargePayment(localStorage.getItem('token'),JSON.parse(localStorage.getItem('userData')).id,id);
+      const amountx= 250
+        var options = {
+          key: "rzp_test_gs53Ffayhc0t6X",
+          key_secret: "QqLcxJhbf5IjkKpnAfQIrjvd",
+          amount: amountx*100,
+          currency: "INR",
+          name: "RechargeZone Payment Gateway",
+          description: "for testing purpose",
+          handler: function (response) {
+            alert(response.razorpay_payment_id)
+          },
+          prefill: {
+            name: "DEEPAK",
+            email: "deepakprabu1234@gmail.com",
+            contact: "8754988838"
+          },
+          notes: {
+            address: "Sri krishna college of Engineering and Technology"
+          },
+          theme: {
+            color: "#3399cc"
+          }
+        }
+    
+        var pay = new window.Razorpay(options)
+        pay.open()
       console.log(response);
-      if(response.data == "added"){
-        alert("Rechage Successful");
-      }
+      // if(response.data == "added"){
+      //   alert("Rechage Successful");
+      // }
     }
     catch (e){
       console.log(e);
