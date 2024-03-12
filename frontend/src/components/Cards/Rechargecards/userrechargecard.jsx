@@ -7,8 +7,8 @@ const Userrechargecard = ( { offerlists } ) => {
 
 
     return (
-        <div>
-            <div className="flex gap-2">
+        <div >
+            <div className="flex gap-2 ">
                 {offerlists.map((offer) => (
                     <div key={offer.id} className="inline-block relative">
                         {/* <div className="absolute top-[-2%] bg-gray-600 right-0 flex gap-2 mt-2 mr-2">

@@ -26,8 +26,8 @@ const Rechargeother = () => {
     };
 
     return (
-        <div className="bg-green-700 min-h-[60%] flex justify-center items-center">
-            <div className="shadow-xl border-4 border-red-500 rounded-2xl bg-green-50 py-3 -px-3 flex flex-col sm:flex-row">
+        <div className="min-h-[60%] flex justify-center items-center">
+            <div className="shadow-xl border-4 border-churn rounded-2xl bg-green-50 py-3 -px-3 flex flex-col sm:flex-row">
                 <div className="flex w-1/2 justify-center mb-6 sm:mb-0 sm:mr-6">
                     <img className="h-full sm:w-full object-cover object-center" src={rechargeOthersImg} alt="recharge for friend" />
                 </div>

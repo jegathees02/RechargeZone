@@ -19,7 +19,7 @@ const UserrechargePage = () => {
                 <div>
                     <Sidebar links={userSidebarLinks} />
                 </div>
-                <div className="flex-1 px-10" >
+                <div className="bg-gray-900 px-10" >
                     <Suspense fallback = {<div>Loading...</div>}>
                         <LazyRecharge />
                     </Suspense>

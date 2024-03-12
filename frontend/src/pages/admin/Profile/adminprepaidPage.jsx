@@ -6,7 +6,7 @@ import Adminprepaid from "../../../components/Adminplanchanges/adminprepaid";
 
 const AdminprepaidPage = () => {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col  bg-white dark:bg-gray-900 ">
             <div>
                 <Navbar links={adminNavbarLinks} />
             </div>

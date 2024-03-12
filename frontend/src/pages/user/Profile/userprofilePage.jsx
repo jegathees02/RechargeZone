@@ -17,13 +17,13 @@ const UserprofilePage = () => {
     //     // Add more user details here
     //   };
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col bg-white dark:bg-gray-900">
             <Navbar links={userNavbarDatas} />
             <div className="flex">
                 <div>
                     <Sidebar links={userSidebarLinks} />
                 </div>
-                <div>
+                <div className='mx-auto'>
                     <Suspense fallback={<div className = "dark:text-white  text-2xl">Loading</div>}>
                         <LazyUserprofile user={JSON.parse(localStorage.getItem('userData'))} />
                     </Suspense>

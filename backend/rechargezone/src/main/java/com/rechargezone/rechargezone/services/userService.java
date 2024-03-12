@@ -175,9 +175,9 @@ public class userService {
         userDetails user = userrepo.findById(userId);
         List<userHistory> history = historyrepo.findByUserDetails(user);
         List<HistoryResponse> historyData = new ArrayList<>();
-        planData plan = history.get(0).getPlanData();
-        
+        int i=0;
         for(userHistory userhistory : history) {
+            planData plan = history.get(i).getPlanData();
             HistoryResponse response = new HistoryResponse();
             response.setPlanName(plan.getPlanName());
             response.setPlanAmount(plan.getPlanAmount());
@@ -186,6 +186,7 @@ public class userService {
             response.setTime(userhistory.getTime().toString());
             
             historyData.add(response);
+            i++;
         }
         Collections.reverse(historyData);
         return historyData;

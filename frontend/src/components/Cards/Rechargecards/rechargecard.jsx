@@ -178,7 +178,7 @@ const Rechargecard = ( { offerlists } ) => {
     // };
 
     return (
-        <div className="font-serif">
+        <div className="font-serif ">
             <div className="flex gap-2">
                 {offerList.map((offer) => (
                     <div key={offer.id} className="inline-block relative">

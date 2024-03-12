@@ -14,6 +14,7 @@ const Userrechargehistory = () => {
                 const response = await UserService.getHistoryData(localStorage.getItem('token'), JSON.parse(localStorage.getItem('userData')).id);
                 setHistory(response.data);
             } catch (e) {
+                alert(e);
                 console.log(e);
             }
         };
@@ -21,7 +22,7 @@ const Userrechargehistory = () => {
         getHistory();
         setTimeout(() => {
             setLoading(true);
-        }, 100);
+        }, 1000);
     }, []);
 
     const generatePDF = (rowData) => {
@@ -74,7 +75,7 @@ const Userrechargehistory = () => {
                                         <td className="px-6 py-4">{historyItem.planName}</td>
                                         <td className="px-6 py-4">{historyItem.rechargedBy}</td>
                                         <td className="px-6 py-4">
-                                            <button onClick={() => generatePDF([historyItem])} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                            <button onClick={() => generatePDF([historyItem])} className="bg-churn  text-white font-bold py-2 px-4 rounded">
                                                 Download PDF
                                             </button>
                                         </td>

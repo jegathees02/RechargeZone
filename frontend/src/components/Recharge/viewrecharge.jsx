@@ -53,6 +53,7 @@ const ViewRecharge = () => {
 
   const handleRecharge = async () => {
     try{
+      // console.log(id);
       const response = await UserService.addRechargePayment(localStorage.getItem('token'),JSON.parse(localStorage.getItem('userData')).id,id);
       const amountx= 250
         var options = {

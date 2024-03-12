@@ -23,11 +23,11 @@ const Admineditprofile = () => {
     };
 
     return (
-        <div className="flex justify-center items-center h-screen">
-            <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
-                <h1 className="text-2xl font-semibold mb-6">Edit Profile</h1>
+        <div className="flex justify-center items-center h-screen bg-white dark:bg-gray-900">
+            <div className="bg-white dark:bg-gray-900 border-2 border-churn shadow-lg rounded-lg p-8 max-w-md w-full">
+                <h1 className="text-2xl font-semibold mb-6  dark:text-churn">Edit Profile</h1>
                 <form onSubmit={handleSubmit}>
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-4">
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-4 text-white">
                         <div className="flex flex-col">
                             <label className="text-gray-600 font-semibold">First Name:</label>
                             <input

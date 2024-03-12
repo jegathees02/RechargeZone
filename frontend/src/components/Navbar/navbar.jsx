@@ -23,7 +23,7 @@ function Navbar({ links }) {
         <>
 
 
-<nav className=" bg-white border-gray-200 dark:bg-gray-900 top-0 shadow-inner shadow-churng ">
+<nav className=" bg-white border-gray-200 dark:bg-gray-900 top-0 shadow-inner shadow-churn ">
   <div className="max-w-screen-xl flex flex-wrap items-center justify-between  mx-auto p-4 ">
   <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
     <Logo />
@@ -32,10 +32,10 @@ function Navbar({ links }) {
   </a>
   <div className="flex justify-end gap-10">
   <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-      <button type="button" className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+      {/* <button type="button" className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
         <span className="sr-only">Open user menu</span>
         <img className="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo"/>
-      </button>
+      </button> */}
       {/* <!-- Dropdown menu --> */}
       {links === "f" && <div className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
         <div className="px-4 py-3">

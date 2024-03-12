@@ -8,7 +8,7 @@ import Admineditprofile from "../../../components/Profile/admineditprofile";
 
 const AdmineditprofilePage = () => {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col h-screen  ">
             <div>
                 <Navbar links={adminNavbarLinks} />
             </div>

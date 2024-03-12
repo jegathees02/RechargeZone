@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Userprofile = ({ user }) => {
   return (
     <section className="container mx-auto px-4 py-8">
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+      <div className="bg-white  dark:bg-gray-900 border-2 border-churn shadow-lg rounded-lg overflow-hidden ">
         <div className="p-6">
           <h2 className="text-2xl font-semibold mb-4">Profile Details</h2>
           <div className="grid grid-cols-2 gap-4">

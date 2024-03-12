@@ -108,7 +108,7 @@ import UserService from '../../Services/UserService';
       // setGb2(UserService.rechageplans(localStorage.getItem('token'),"unlimited", userData.serviceProvider, "prepaid"));
     }, []);
     return (
-      <div className='w-[1/3]flex flex-col font-serif'>
+      <div className=' flex flex-col font-serif dark:bg-gray-900 bg-white'>
         {console.log(gb1)};
         {/* <div className="py-4">
           <h1 className="text-2xl font-bold text-white">1 GB/Day plan</h1>

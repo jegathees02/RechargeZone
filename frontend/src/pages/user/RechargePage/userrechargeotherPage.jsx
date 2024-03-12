@@ -11,7 +11,7 @@ const LazyRecharge = React.lazy(() => import('../../../components/Recharge/recha
 const UserrechargeotherPage = () => {
     return (
         <>
-        <div className="flex flex-col">
+        <div className="flex  flex-col">
             <div>
             <Navbar links={userNavbarDatas} />  
             </div>
@@ -19,7 +19,7 @@ const UserrechargeotherPage = () => {
                 <div>
                     <Sidebar links={userSidebarLinks} />
                 </div>
-                <div className="flex-1 px-10 md:mx-auto md:w-full items-center" >
+                <div className="flex-1 px-10 md:mx-auto md:w-full items-center dark:bg-gray-900 bg-white" >
                     <Suspense fallback = {<div>Loading...</div>}>
                         <LazyRecharge />
                     </Suspense>

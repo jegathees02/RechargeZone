@@ -8,10 +8,10 @@ const Sidebar = ({ links }) => {
     return (
         <>
         <aside id="default-sidebar" className=" top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidenav">
-  <div className=" overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+  <div className="shadow-inner shadow-churn overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 dark:bg-gray-900 dark:border-gray-700">
       <ul className="  space-y-2">
       {links.map((link, index) => (
-                            <li className={location.pathname === link.href ? 'focus: bg-red-300' : ''} key={index}>
+                            <li className={location.pathname === link.href ? 'focus: bg-churn rounded-lg' : ''} key={index}>
                                 <Link to={link.href} className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-white group">
                                     {link.svgs}
                                     <span className="ml-3">{link.label}</span>

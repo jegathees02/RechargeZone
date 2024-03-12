@@ -8,7 +8,7 @@ import Adminpostpaid from "../../../components/Adminplanchanges/adminpostpaid";
 
 const AdminpostpaidPage = () => {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col bg-white dark:bg-gray-900 ">
             <div>
                 <Navbar links={adminNavbarLinks} />
             </div>

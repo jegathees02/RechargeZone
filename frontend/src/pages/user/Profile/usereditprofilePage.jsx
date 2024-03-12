@@ -10,11 +10,11 @@ const LazyEditProfile = React.lazy(() => import('../../../components/Profile/edi
 
 const EditprofilePage = () => {
     return (
-        <div className="flex flex-col bg-gradient-to-r from-slate-50 to-emerald-100 dark:bg-gradient-to-r from-slate-900 to-slate-700">
+        <div className="flex flex-col bg-white dark:bg-gray-900">
             <Navbar links={userNavbarDatas}/>
             <div className="flex">
                 <Sidebar links={userSidebarLinks}/>
-                <div className="mx-auto">
+                <div className="mx-auto  bg-white dark:bg-gray-900">
                     <Suspense fallback={<div className="dark: text-2xl text-white">Loading ...</div>}>
                         <LazyEditProfile />
                     </Suspense>

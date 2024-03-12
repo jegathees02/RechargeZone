@@ -10,7 +10,7 @@ import Userrechargehistory from "../../../components/Histrory/userrechargehistor
 const UserhistoryPage = () => {
     return (
         <>
-        <div className="flex flex-col">
+        <div className="flex flex-col bg-white dark:bg-gray-900">
             <div>
             <Navbar links={userNavbarDatas} />  
             </div>
@@ -18,7 +18,7 @@ const UserhistoryPage = () => {
                 <div>
                     <Sidebar links={userSidebarLinks} />
                 </div>
-                <div className="flex-1 my-auto px-10" >
+                <div className="flex-1 my-auto px-10 bg-white dark:bg-gray-900" >
                     {/* <div className="mx-auto"> */}
                         <Userrechargehistory />
                     {/* </div> */}

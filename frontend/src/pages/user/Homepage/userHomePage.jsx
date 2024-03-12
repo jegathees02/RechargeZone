@@ -46,7 +46,7 @@ const UserHomePage = () => {
     // const userRole = 'user';
   return (
     <>
-    <div className="font-serif flex flex-col dark:text-white">
+    <div className="font-serif flex flex-col dark:text-white bg-white dark:bg-gray-900">
       {/* <Navbar links={userNavbarDatas} /> */}
       <Suspense fallback={<div>Loading Navbar...</div>}>
         <LazyNavbar  links={userNavbarDatas}/>
