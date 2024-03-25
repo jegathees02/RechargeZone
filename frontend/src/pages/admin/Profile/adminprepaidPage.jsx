@@ -14,7 +14,7 @@ const AdminprepaidPage = () => {
                 <div>
                     <Sidebar links={adminSidebarLinks} />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 dark:bg-gray-900">
                     <Adminprepaid/>
                 </div>
 

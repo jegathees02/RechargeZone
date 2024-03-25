@@ -16,7 +16,7 @@ const Userrechargecard = ( { offerlists } ) => {
                             <FontAwesomeIcon icon={faTrash} onClick={() => handleDeleteOffer(offer.id)} className="text-red-500 cursor-pointer"  />
                             <FontAwesomeIcon icon={faEdit} onClick={() => handleUpdateOffer(offer)} className="text-blue-500 cursor-pointer" />
                         </div> */}
-                        <div className="text-white border-2 rounded-xl p-2 w-60  mt-2 flex flex-col dark:bg-gray-900">
+                        <div className="dark:text-white text-gray-900 border-2 dark:border-white border-gray-800 rounded-xl p-2 w-60  mt-2 flex flex-col dark:bg-gray-900">
                             <div className="flex justify-between py-2">
                                 <div>
                                     <h1 className="text-2xl font-bold text-[#01c293]">₹ {offer.planAmount}</h1>
@@ -41,8 +41,8 @@ const Userrechargecard = ( { offerlists } ) => {
                                 <h1>Subscriptions:</h1>
                                 <h1>{offer.plansubscription}</h1>
                             </div>
-                            <div className="py-4 w-full justify-center items-center mx-auto">
-                                <Link to={`/user/recharge/${offer.id}`} className="border px-[25%] py-1 bg-blue-600 hover:bg-blue-700 rounded-2xl">
+                            <div className="py-4 w-full justify-center items-center mx-auto ">
+                                <Link to={`/user/recharge/${offer.id}`} className="border px-[25%] py-1 bg-churn hover:opacity-4 rounded-2xl">
                                     Recharge
                                 </Link>
                             </div>

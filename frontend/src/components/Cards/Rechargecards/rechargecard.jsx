@@ -37,6 +37,7 @@ import AdminService from '../../../Services/AdminService';
 // ];
 
 const Rechargecard = ( { offerlists } ) => {
+    console.log(offerlists);
     const [offerList, setOfferList] = useState([]);
     const [showAddModal, setShowAddModal] = useState(false);
     // const [newOfferData, setNewOfferData] = useState({});
@@ -99,7 +100,7 @@ const Rechargecard = ( { offerlists } ) => {
     const handleAddModalSubmit = async() => {
         const planData = {
             'operator' : "jio",
-            'planType' : "prepaid",
+            'planType' : localStorage.getItem('simType'),
             'planName' : addOffer.name,
             'planValidity' : addOffer.validity,
             'planAmount' : addOffer.price,
@@ -109,6 +110,7 @@ const Rechargecard = ( { offerlists } ) => {
             'planData' : addOffer.data,
             'plansubscription' : addOffer.subscription
         }
+        console.log(planData);
         try{
             console.log(planData);
             const response = await AdminService.addRecharePlans(localStorage.getItem('token'), planData);
@@ -134,7 +136,7 @@ const Rechargecard = ( { offerlists } ) => {
         const planData = {
             'id' : selectedOffer.id,
             'operator' : "jio",
-            'planType' : "prepaid",
+            'planType' : localStorage.getItem('simType'),
             'planName' : selectedOffer.planName,
             'planValidity' : selectedOffer.planValidity,
             'planAmount' : selectedOffer.planAmount,
@@ -144,6 +146,7 @@ const Rechargecard = ( { offerlists } ) => {
             'planData' : selectedOffer.planData,
             'plansubscription' : selectedOffer.plansubscription
         }
+        console.log(planData);
         try{
             console.log('plan data',planData);
             console.log(selectedOffer.id);

@@ -125,6 +125,7 @@ const Admintopup = () => {
         const response2 = await AdminService.rechageplans(localStorage.getItem('token'), "jio","2", "topup");
         setGb2(response2.data);
         console.log(response1.data);
+        localStorage.setItem('simType', "topup");
       }
       catch(e) {
         console.log(e);

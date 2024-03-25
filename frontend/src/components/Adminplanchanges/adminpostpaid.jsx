@@ -59,6 +59,7 @@ const Adminpostpaid = () => {
         'planData' : addOffer.data,
         'plansubscription' : addOffer.subscription
     }
+    console.log(planData);
     try{
         console.log(planData);
         const response = await AdminService.addRecharePlans(localStorage.getItem('token'), planData);
@@ -143,6 +144,7 @@ const Adminpostpaid = () => {
         const response2 = await AdminService.rechageplansPostpaid(localStorage.getItem('token'), "jio","84", "postpaid");
         setGb2(response2.data);
         console.log(response1.data);
+        localStorage.setItem('simType', "postpaid");
       }
       catch(e) {
         console.log(e);
@@ -153,7 +155,7 @@ const Adminpostpaid = () => {
 
   return (
     <>
-    <div className="flex flex-col px-6 h-screen bg-white dark:bg-gray-900">
+    <div className="flex flex-col px-6 h-full bg-white dark:bg-gray-900">
       <div className="py-5">
         <div className="w-2/4 border min-h-9 flex justify-evenly text-black dark:text-white">
           {/* <div></div> */}

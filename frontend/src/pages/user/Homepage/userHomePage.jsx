@@ -14,6 +14,7 @@ import { userSidebarLinks } from "../../../components/sidebar/sidebardata";
 
 import OfferImg from '../../../assets/images/signup.gif';
 import UserService from '../../../Services/UserService';
+import HomePageBarChart from '../../../components/Charts/homePageBarChart';
 // import axios from 'axios';
 
 
@@ -24,6 +25,7 @@ const LazySidebar = React.lazy(() => import("../../../components/sidebar/sidebar
 const UserHomePage = () => {
   const name = useSelector((state) => state.userRole.name);
   const [planData, setPlanData] = useState([]);
+  // const [amountSpent, setAmountSpent] = useState([]);
 
   useEffect(() => {
     const getPlan = async () => {
@@ -31,6 +33,9 @@ const UserHomePage = () => {
       setPlanData(response.data);
       console.log(response.data);
       console.log(planData);
+      // const response1 = await UserService.getTotalAmountSpend(localStorage.getItem('token'), JSON.parse(localStorage.getItem('userData')).id);
+      // setAmountSpent(response1);
+      // console.log('Amount spend data',amountSpent);
 
     }
     getPlan();
@@ -93,6 +98,9 @@ const UserHomePage = () => {
               </div>
           </div> */}
         {/* </div> */}
+        </div>
+        <div className='py-4  min-h-[35%]'>
+          <HomePageBarChart />
         </div>
         <div className="p-4 font-serif">
           <h1 className="text-4xl font-sans font-semibold">Offers</h1>

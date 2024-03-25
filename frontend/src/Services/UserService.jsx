@@ -78,6 +78,23 @@ class UserService {
         return axios.get(BASE_API_URL+`user/getLatestRechargeByUserId/${userid}`,config);
     }
 
+    getTotalAmountSpend(token, userid) {
+        const config = {
+            headers : {
+            Authorization : `Bearer ${token}`,
+        },
+        };
+        return axios.get(BASE_API_URL + `user/getamountspent/${userid}`, config)
+        .then(response => {
+            console.log(response.data);
+            return response.data;
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            throw error; // or handle the error as required
+        });
+    }
+
     // viewprepaidplans(token,operator,data,types) {
     //     const config = {
     //         headers : {

@@ -17,7 +17,7 @@
 
 
 body {
-  background-color: #222;
+  /* background-color: #222; */
 }
 
 /* 
@@ -45,5 +45,6 @@ body {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: churn;
+  opacity: .1;
 }

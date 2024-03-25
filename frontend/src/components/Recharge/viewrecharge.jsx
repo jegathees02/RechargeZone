@@ -55,11 +55,11 @@ const ViewRecharge = () => {
     try{
       // console.log(id);
       const response = await UserService.addRechargePayment(localStorage.getItem('token'),JSON.parse(localStorage.getItem('userData')).id,id);
-      const amountx= 250
+      // const amountx= 250
         var options = {
           key: "rzp_test_gs53Ffayhc0t6X",
           key_secret: "QqLcxJhbf5IjkKpnAfQIrjvd",
-          amount: amountx*100,
+          amount: offer[0].planAmount*100,
           currency: "INR",
           name: "RechargeZone Payment Gateway",
           description: "for testing purpose",

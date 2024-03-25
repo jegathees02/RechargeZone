@@ -86,6 +86,12 @@ public class UserController {
         return userservice.getLatestRechargePlanByUserId(id);
     }
 
+    @PreAuthorize("hasAuthority('user')")
+    @GetMapping("/getamountspent/{id}")
+    public List<Integer> getAmountSpent(@PathVariable long id) {
+        return userservice.getTotalSpendingPerMonth(id);
+    }
+
     // @PreAuthorize("hasAuthority('user')")
     @PostMapping("/recharge/{userId}/{planId}")
     public String recharge(@PathVariable long userId, @PathVariable long planId) {

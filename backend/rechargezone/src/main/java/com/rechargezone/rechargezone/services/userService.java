@@ -17,6 +17,7 @@ import com.rechargezone.rechargezone.repository.userRepository;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -228,6 +229,21 @@ public planDataDTO getLatestRechargePlanByUserId(long userId) {
     // Set other plan details as needed
     
     return planDetails;
+}
+
+public List<Integer> getTotalSpendingPerMonth(long userId) {
+    userDetails user = userrepo.findById(userId);
+    List<userHistory> history = historyrepo.findByUserDetails(user);
+    List<Integer> totalSpendingPerMonth = new ArrayList<>(Arrays.asList(new Integer[12]));
+    Collections.fill(totalSpendingPerMonth, 100);
+
+    for (userHistory userhistory : history) {
+        int month = userhistory.getDate().getMonthValue() - 1; // Month index starts from 0
+        int amountSpent = Integer.parseInt(userhistory.getPlanData().getPlanAmount());
+        totalSpendingPerMonth.set(month, totalSpendingPerMonth.get(month) + amountSpent);
+    }
+
+    return totalSpendingPerMonth;
 }
 
 

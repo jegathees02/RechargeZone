@@ -9,7 +9,7 @@ const Landing = () => {
             </div>
             <div className='p-7'>
                 <h1 className='font-madimi text-6xl text-churn dark:text-churn   py-5 '>RechargeZone</h1>
-                <p className='text-3xl dark: text-white pb-5'> Easy Pay through one  click</p>
+                <p className='text-3xl dark: text-black dark:text-white pb-5'> Easy Pay through one  click</p>
 
                 
                 <Link to="/login"><button  className='bg-churn rounded-md py-2 px-6'>

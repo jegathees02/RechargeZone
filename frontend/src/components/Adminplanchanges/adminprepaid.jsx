@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Rechargecard from "../Cards/Rechargecards/rechargecard";
 import AdminService from "../../Services/AdminService";
+import HashLoader from "react-spinners/HashLoader"
 
 // const initialOfferList = [
 //     {
@@ -23,6 +24,7 @@ import AdminService from "../../Services/AdminService";
 // ];
 
 const Adminprepaid = () => {
+  const [loading, setLoading] = useState(true);
   const [gb1,setGb1] = useState([]);
   const [gb1_5,setGb1_5] = useState([]);
   const [gb2,setGb2] = useState([]);
@@ -81,6 +83,7 @@ const Adminprepaid = () => {
   };
   const handlejio = async() => {
     setServiceProvider('jio');
+    setLoading(true);
     try{
       const response1 = await AdminService.rechageplans(localStorage.getItem('token'), "jio","1", "prepaid");
       setGb1(response1.data);
@@ -95,8 +98,10 @@ const Adminprepaid = () => {
     catch(e) {
       console.log(e);
     }
+    setLoading(false);
   }
   const handleairtel = async() => {
+    setLoading(true);
     setServiceProvider('airtel');
     try{
       const response1 = await AdminService.rechageplans(localStorage.getItem('token'), "airtel","1", "prepaid");
@@ -112,9 +117,11 @@ const Adminprepaid = () => {
     catch(e) {
       console.log(e);
     }
+    setLoading(false);
   }
   const handlevi = async() => {
     setServiceProvider('vi');
+    setLoading(true);
     try{
       const response1 = await AdminService.rechageplans(localStorage.getItem('token'), "vi","1", "prepaid");
       setGb1(response1.data);
@@ -125,10 +132,12 @@ const Adminprepaid = () => {
       const response2 = await AdminService.rechageplans(localStorage.getItem('token'), "vi","2", "prepaid");
       setGb2(response2.data);
       console.log(response1.data);
+      localStorage.setItem('simType', "prepaid");
     }
     catch(e) {
       console.log(e);
     }
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -149,16 +158,24 @@ const Adminprepaid = () => {
       }
     }
     fetchPlans();
+    setLoading(false);
   },[]);
+  if(loading) {
+    return(
+      <div className="mx-auto mt-[20%] justify-center  flex">
+        <HashLoader color="#01c293" size={100} />
+      </div>
+    )
+  }
     return (
       <>
-      <div className="flex flex-col px-6 h-screen bg-white  dark:bg-gray-900">
+      <div className="flex flex-col px-6 h-full bg-white  dark:bg-gray-900">
         <div className="py-5">
-          <div className="w-2/4 border min-h-9 flex justify-evenly text-white">
+          <div className="w-2/4   rounded-xl bg-gray-200 border-gray-700 border-1 dark:bg-gray-800 min-h-9 flex justify-evenly text-white">
             {/* <div></div> */}
-            <h1 onClick={handlejio} className={`border rounded-md px-4 my-auto   ${serviceProvider === 'jio' ? 'text-white bg-churn bg-opacity-70' : ''}`}>Jio</h1>
-            <h2 onClick={handleairtel} className={`border rounded-md px-4 my-auto  ${serviceProvider === 'airtel' ? 'text-white bg-churn bg-opacity-70' : ''}`}>Airtel</h2>
-            <h1 onClick={handlevi} className={`border rounded-md px-4 my-auto  ${serviceProvider === 'vi' ? 'text-white bg-churn bg-opacity-70 ' : ''}`}>VI</h1>
+            <h1 onClick={handlejio} className={`border rounded-md px-4 my-auto text-black cursor-pointer   ${serviceProvider === 'jio' ? 'text-black dark:text-white bg-churn bg-opacity-70' : ''}`}>Jio</h1>
+            <h2 onClick={handleairtel} className={`border rounded-md px-4 my-auto text-black cursor-pointer ${serviceProvider === 'airtel' ? 'text-black dark:text-white bg-churn bg-opacity-70' : ''}`}>Airtel</h2>
+            <h1 onClick={handlevi} className={`border rounded-md px-4 my-auto text-black cursor-pointer ${serviceProvider === 'vi' ? 'text-black dark:text-white bg-churn bg-opacity-70 ' : ''}`}>VI</h1>
           </div>
         </div>
         <div>

@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import rechargeOthersImg from '../../assets/images/rechargeOther1.gif';  
 
 const Rechargeother = () => {
+    const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
     const [mobileNumber, setMobileNumber] = useState('');
     const [serviceProvider, setServiceProvider] = useState('');
@@ -23,6 +25,8 @@ const Rechargeother = () => {
         console.log('SIM Type:', simType);
         // Close modal or reset form
         closeModal();
+        alert("Recharge Successful");
+        navigate('/user/recharge/other')
     };
 
     return (
@@ -52,11 +56,15 @@ const Rechargeother = () => {
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="simType" className="block text-sm font-medium text-gray-700">SIM Type</label>
+                                <input type="text" id="simType" value={simType} onChange={(e) => setSimType(e.target.value)} className="mt-1 p-2 border border-gray-300  rounded-md w-full" />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="simType" className="block text-sm font-medium text-gray-700">Plan Amount</label>
                                 <input type="text" id="simType" value={simType} onChange={(e) => setSimType(e.target.value)} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
                             </div>
                             <div className="flex justify-end">
                                 <button type="button" onClick={closeModal} className="mr-2 px-4 py-2 bg-gray-300 rounded-md">Cancel</button>
-                                <button type="submit" className="px-4 py-2 bg-green-500 text-white rounded-md">Submit</button>
+                                <button type="submit" className="px-4 py-2 bg-churn text-white rounded-md">Submit</button>
                             </div>
                         </form>
                     </div>

@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import UserService from "../../Services/UserService";
+import HashLoader from "react-spinners/HashLoader";
 
 const Userrechargehistory = () => {
     const [history, setHistory] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const getHistory = async () => {
@@ -21,8 +22,8 @@ const Userrechargehistory = () => {
 
         getHistory();
         setTimeout(() => {
-            setLoading(true);
-        }, 1000);
+            setLoading(false);
+        }, 2000);
     }, []);
 
     const generatePDF = (rowData) => {
@@ -35,10 +36,20 @@ const Userrechargehistory = () => {
 
         doc.save('recharge_history.pdf');
     };
+    if(loading) {
+        return(
+            <div className="mx-auto items-center justify-center w-fit ">
+                <HashLoader
+            color="#36d7b7"
+            size={100}
+          />
+            </div>
+        )
+    }
 
     return (
         <>
-            {loading && (
+            {!loading && (
                 <div>
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
